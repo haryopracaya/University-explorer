@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Path Explorer</title>
+    <title>University Path Explorer - Complete</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,10 +12,10 @@
         .tab-content.active { display: block; }
         .nav-item.active { background-color: #e5e7eb; font-weight: 600; color: #2563eb; border-left: 4px solid #2563eb; }
         .nav-item { border-left: 4px solid transparent; }
-        /* Enable smooth native scrolling */
         html, body { height: 100%; overflow-y: auto; }
         .main-container { min-height: 100vh; display: flex; flex-direction: column; }
         @media (min-width: 768px) { .main-container { flex-direction: row; } }
+        .checklist-item.checked { text-decoration: line-through; color: #9ca3af; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -38,33 +38,34 @@
     </nav>
 
     <!-- Main Content Area -->
-    <main class="flex-1 p-4 md:p-8 w-full">
+    <main class="flex-1 p-4 md:p-8 w-full max-w-7xl mx-auto">
         
         <!-- Dashboard Tab -->
         <section id="dashboard" class="tab-content active">
             <h2 class="text-3xl font-bold mb-6 text-gray-800">Dashboard</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Profile Snippet -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">Profile Overview</h3>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">My Profile</h3>
                     <p class="text-sm text-gray-600"><strong>Curriculum:</strong> Kurikulum Merdeka (Grade 12)</p>
                     <p class="text-sm text-gray-600"><strong>Target:</strong> 2027 Intake</p>
-                    <p class="text-sm text-gray-600"><strong>Interests:</strong> Biotech, Pharma, Biomed, Bioengineering</p>
-                    <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-200">
-                        <i class="fas fa-exclamation-triangle mr-1"></i> Physics prerequisite flagged for engineering paths. Ensure equivalency checks.
+                    <p class="text-sm text-gray-600"><strong>Grades:</strong> Bio 92, Chem 93, Math 100, Adv Math 90</p>
+                    <div class="mt-3 text-xs bg-red-50 text-red-800 p-3 rounded border border-red-200 font-semibold">
+                        <i class="fas fa-exclamation-triangle mr-1"></i> Missing Senior Physics flagged! Equivalency required for U of T Eng, UBC BME, McGill Bioeng, Groningen, Radboud, and Aalto.
                     </div>
                 </div>
                 <!-- Test Readiness -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100" id="dash-tests">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200" id="dash-tests">
                     <!-- Populated by JS -->
                 </div>
                 <!-- Deadlines -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">Upcoming Milestones</h3>
-                    <ul class="text-sm space-y-2">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">Upcoming Action Items</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
                         <li><span class="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span><strong>Oct 3, 2026:</strong> SAT Early Attempt</li>
                         <li><span class="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span><strong>Nov 7, 2026:</strong> SAT Main Attempt</li>
-                        <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Fall 2026:</strong> Application Portals Open</li>
+                        <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Nov 2026:</strong> U of T Early App Deadline</li>
+                        <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Dec 2026:</strong> Kyoto iUP Deadline</li>
                     </ul>
                 </div>
             </div>
@@ -72,14 +73,41 @@
 
         <!-- Universities Tab -->
         <section id="universities" class="tab-content">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Universities & Programs</h2>
-            <div class="mb-4 flex flex-wrap gap-2" id="uni-filters">
-                <button onclick="filterUnis('All')" class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm">All</button>
-                <button onclick="filterUnis('Japan')" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-full text-sm">Japan</button>
-                <button onclick="filterUnis('Europe')" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-full text-sm">Europe</button>
-                <button onclick="filterUnis('Canada')" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-full text-sm">Canada</button>
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Programs & Academics</h2>
+            <div class="mb-6 flex flex-wrap gap-2" id="uni-filters">
+                <button onclick="filterUnis('All')" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold transition filter-btn" data-filter="All">All Regions</button>
+                <button onclick="filterUnis('Japan')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Japan">Japan (3)</button>
+                <button onclick="filterUnis('Europe')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Europe">Europe (4)</button>
+                <button onclick="filterUnis('Canada')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Canada">Canada (4)</button>
             </div>
-            <div id="uni-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div id="uni-list" class="space-y-6">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Requirements Tab -->
+        <section id="requirements" class="tab-content">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Requirements & Equivalency</h2>
+            <p class="text-gray-600 mb-6">Kurikulum Merdeka equivalency, subject prerequisites (Physics flag), and required documents.</p>
+            <div id="req-content" class="space-y-6">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Tuition Tab -->
+        <section id="tuition" class="tab-content">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Tuition & Scholarships</h2>
+            <p class="text-gray-600 mb-6">Estimated annual costs and active undergraduate scholarships (Pearson removed per request).</p>
+            <div id="tuition-content" class="space-y-6">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Living Cost Tab -->
+        <section id="living" class="tab-content">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Living Costs</h2>
+            <p class="text-gray-600 mb-6">Estimated monthly and annual living expenses by city.</p>
+            <div id="living-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Rendered by JS -->
             </div>
         </section>
@@ -89,29 +117,23 @@
             <h2 class="text-3xl font-bold mb-2 text-gray-800">Career & Workspace</h2>
             <p class="text-gray-600 mb-6">Global industry landscapes for biotechnology, biomedical engineering, and pharma.</p>
             
-            <div class="space-y-8">
+            <div class="space-y-6">
                 <!-- Canada -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-red-50 border-b border-red-100 p-4">
-                        <h3 class="font-bold text-xl text-red-800"><i class="fab fa-canadian-maple-leaf mr-2"></i>Canada (Toronto, Vancouver, Montreal)</h3>
-                    </div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-red-50 border-b border-red-100 p-4"><h3 class="font-bold text-xl text-red-800"><i class="fab fa-canadian-maple-leaf mr-2"></i>Canada (Toronto, Vancouver, Montreal)</h3></div>
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <div>
-                            <strong class="block text-gray-700 mb-1">Industry Landscape:</strong>
-                            <p class="text-gray-600 mb-3">Strong biotech hubs with heavy integration into public hospital networks. Toronto (MaRS Discovery District) is massive for AI-driven health tech and regenerative medicine. Montreal is a historic pharma hub. Vancouver leads in lipid-nanoparticle and genomics research.</p>
-                            <strong class="block text-gray-700 mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5 text-gray-600">
-                                <li>Pharma: Sanofi, STEMCELL Technologies, Zymeworks.</li>
-                                <li>Hospitals: University Health Network (UHN), SickKids.</li>
-                                <li>Startups: Precision medicine and bioprocessing firms.</li>
-                            </ul>
+                            <strong class="block mb-1">Industry Landscape:</strong>
+                            <p class="mb-3">Strong biotech hubs integrated into public hospital networks. Toronto (MaRS) is massive for health-tech. Montreal is a historic pharma hub. Vancouver leads in genomics and lipid nanoparticles.</p>
+                            <strong class="block mb-1">Typical Employers:</strong>
+                            <ul class="list-disc pl-5"><li>Pharma: Sanofi, STEMCELL.</li><li>Hospitals: UHN, SickKids.</li></ul>
                         </div>
                         <div>
-                            <strong class="block text-gray-700 mb-1">Role & Degree Expectations:</strong>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
-                                <li><strong>BSc / BEng:</strong> Process Engineer, Clinical Research Assistant, QA/QC Specialist. Often involves manufacturing floors or assay execution.</li>
-                                <li><strong>MSc:</strong> R&D Engineer, Formulation Scientist. Directs smaller projects and designs experiments.</li>
-                                <li><strong>PhD:</strong> Principal Investigator, Senior Scientist. Required for independent discovery research.</li>
+                            <strong class="block mb-1">Roles (Progression):</strong>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><strong>BSc / BEng:</strong> Process Engineer, Clinical Research Assistant, QA/QC. (Lab execution, manufacturing floor).</li>
+                                <li><strong>MSc:</strong> R&D Engineer, Formulation Scientist.</li>
+                                <li><strong>PhD:</strong> Principal Investigator, Senior Scientist.</li>
                             </ul>
                         </div>
                     </div>
@@ -119,123 +141,68 @@
 
                 <!-- Netherlands -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-orange-50 border-b border-orange-100 p-4">
-                        <h3 class="font-bold text-xl text-orange-800"><i class="fas fa-water mr-2"></i>The Netherlands (Groningen, Nijmegen, Leiden)</h3>
-                    </div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-orange-50 border-b border-orange-100 p-4"><h3 class="font-bold text-xl text-orange-800"><i class="fas fa-water mr-2"></i>The Netherlands (Groningen, Nijmegen, Leiden)</h3></div>
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <div>
-                            <strong class="block text-gray-700 mb-1">Industry Landscape:</strong>
-                            <p class="text-gray-600 mb-3">A European powerhouse for medical technology and clinical trials. Extremely high concentration of life sciences parks (e.g., Leiden Bio Science Park). Excellent ecosystem for bridging molecular biology with manufacturing scaling.</p>
-                            <strong class="block text-gray-700 mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5 text-gray-600">
-                                <li>MedTech: Philips Healthcare.</li>
-                                <li>Biotech/Pharma: Janssen (J&J), Galapagos, Pharming.</li>
-                                <li>Research: European Medicines Agency (EMA) ecosystem.</li>
-                            </ul>
+                            <strong class="block mb-1">Industry Landscape:</strong>
+                            <p class="mb-3">European powerhouse for clinical trials and medical technology. High density of life sciences parks (e.g., Leiden Bio Science Park).</p>
+                            <strong class="block mb-1">Typical Employers:</strong>
+                            <ul class="list-disc pl-5"><li>MedTech: Philips Healthcare.</li><li>Biotech: Janssen, Galapagos.</li></ul>
                         </div>
                         <div>
-                            <strong class="block text-gray-700 mb-1">Role & Degree Expectations:</strong>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
-                                <li><strong>BSc:</strong> Lab Technician, Manufacturing Associate. (Note: In NL, university BSc graduates often proceed directly to MSc; Applied Science / HBO graduates typically take BSc lab roles).</li>
-                                <li><strong>MSc:</strong> Biomedical Engineer, Clinical Trial Coordinator. Highly employable in Dutch med-tech.</li>
-                                <li><strong>PhD:</strong> Essential for academia and highly preferred for R&D leadership in pharma.</li>
+                            <strong class="block mb-1">Roles (Progression):</strong>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><strong>BSc:</strong> In NL, university BSc grads usually go directly to MSc. HBO (Applied Science) grads take the BSc lab tech roles.</li>
+                                <li><strong>MSc:</strong> Biomedical Engineer, Clinical Trial Coordinator. Highly employable in Dutch MedTech.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Finland -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-blue-50 border-b border-blue-100 p-4">
-                        <h3 class="font-bold text-xl text-blue-800"><i class="fas fa-snowflake mr-2"></i>Finland (Espoo, Helsinki)</h3>
-                    </div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div>
-                            <strong class="block text-gray-700 mb-1">Industry Landscape:</strong>
-                            <p class="text-gray-600 mb-3">Focuses heavily on digital health, wearables, biomaterials, and bioinformatics. Finland excels at combining hardware/software engineering with biology (e.g., biosensors, neuro-tech).</p>
-                            <strong class="block text-gray-700 mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5 text-gray-600">
-                                <li>HealthTech: Oura, GE Healthcare, Planmeca.</li>
-                                <li>Biotech: Orion Pharma, VTT Technical Research Centre.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong class="block text-gray-700 mb-1">Role & Degree Expectations:</strong>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
-                                <li><strong>Workspace:</strong> Highly interdisciplinary. A bioengineer here will likely code (Python) and work with electronics/materials alongside wet-lab.</li>
-                                <li><strong>Progression:</strong> BSc + MSc is the standard Finnish university outcome. PhDs are strictly for deep R&D or academia.</li>
-                            </ul>
+                <!-- Finland & Belgium -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div class="bg-blue-50 border-b border-blue-100 p-4"><h3 class="font-bold text-lg text-blue-800"><i class="fas fa-snowflake mr-2"></i>Finland (Espoo)</h3></div>
+                        <div class="p-4 text-sm text-gray-700">
+                            <p class="mb-2"><strong>Focus:</strong> Digital health, wearables, biomaterials (GE Healthcare, Oura). Highly interdisciplinary.</p>
+                            <p><strong>Roles:</strong> Bioengineers here often code (Python) alongside wet-lab work. BSc+MSc is the standard entry requirement.</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Belgium -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-yellow-50 border-b border-yellow-100 p-4">
-                        <h3 class="font-bold text-xl text-yellow-800"><i class="fas fa-landmark mr-2"></i>Belgium (Leuven, Flanders)</h3>
-                    </div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                        <div>
-                            <strong class="block text-gray-700 mb-1">Industry Landscape:</strong>
-                            <p class="text-gray-600 mb-3">One of the highest densities of biopharma production in the world. Flanders is heavily subsidized for biotech startups.</p>
-                            <strong class="block text-gray-700 mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5 text-gray-600">
-                                <li>Pharma: Pfizer (vaccine hub), GSK, UCB.</li>
-                                <li>Research: VIB (Flanders Institute for Biotechnology).</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong class="block text-gray-700 mb-1">Role & Degree Expectations:</strong>
-                            <p class="text-gray-600">Massive demand for <strong>Bioprocess Engineers</strong> and <strong>Chemical Engineers (Biotech)</strong> to scale up drug and vaccine manufacturing. A BSc/MSc is perfect for manufacturing leadership.</p>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div class="bg-yellow-50 border-b border-yellow-100 p-4"><h3 class="font-bold text-lg text-yellow-800"><i class="fas fa-landmark mr-2"></i>Belgium (Leuven)</h3></div>
+                        <div class="p-4 text-sm text-gray-700">
+                            <p class="mb-2"><strong>Focus:</strong> Biopharma manufacturing and scale-up (Pfizer, GSK, UCB). Flanders heavily subsidizes biotech.</p>
+                            <p><strong>Roles:</strong> Massive demand for Bioprocess and Chemical Engineers to manage vaccine/drug manufacturing floors.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Japan -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-pink-50 border-b border-pink-100 p-4">
-                        <h3 class="font-bold text-xl text-pink-800"><i class="fas fa-torii-gate mr-2"></i>Japan (Kyoto, Tokyo, Sendai)</h3>
-                    </div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-pink-50 border-b border-pink-100 p-4"><h3 class="font-bold text-xl text-pink-800"><i class="fas fa-torii-gate mr-2"></i>Japan (Kyoto, Tokyo, Sendai)</h3></div>
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <div>
-                            <strong class="block text-gray-700 mb-1">Industry Landscape:</strong>
-                            <p class="text-gray-600 mb-3">Global leaders in regenerative medicine (iPS cells), robotics/medical devices for an aging population, and fermentation/bioprocessing.</p>
-                            <strong class="block text-gray-700 mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5 text-gray-600">
-                                <li>Pharma: Takeda, Astellas, Chugai.</li>
-                                <li>Tech/Devices: Olympus, Terumo, Sysmex.</li>
-                                <li>Institutes: RIKEN, CiRA (Kyoto).</li>
-                            </ul>
+                            <strong class="block mb-1">Industry Landscape:</strong>
+                            <p class="mb-3">Global leaders in regenerative medicine (iPS cells), robotics, and fermentation. Employers: Takeda, Astellas, Olympus, RIKEN.</p>
                         </div>
                         <div>
-                            <strong class="block text-gray-700 mb-1">Role & Degree Expectations:</strong>
-                            <p class="text-gray-600">Master's degrees are virtually mandatory for R&D roles in major Japanese corporations. Japanese fluency (N2/N1) is critical for corporate integration, though lab environments may be more English-friendly.</p>
+                            <strong class="block mb-1">Roles:</strong>
+                            <p>MSc is virtually mandatory for R&D in major Japanese corporations. Japanese fluency (JLPT N2/N1) is critical for corporate integration, though academic lab environments are English-friendly.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Indonesia -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-green-50 border-b border-green-100 p-4">
-                        <h3 class="font-bold text-xl text-green-800"><i class="fas fa-map-marker-alt mr-2"></i>Indonesia (Returning Home)</h3>
-                    </div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-green-50 border-b border-green-100 p-4"><h3 class="font-bold text-xl text-green-800"><i class="fas fa-map-marker-alt mr-2"></i>Indonesia (Returning Home)</h3></div>
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <div>
-                            <strong class="block text-gray-700 mb-1">Industry Landscape:</strong>
-                            <p class="text-gray-600 mb-3">Rapidly growing domestic production aiming for self-reliance in vaccines, generic drugs, and raw bioprocessing. High need for regulatory and clinical trials management.</p>
-                            <strong class="block text-gray-700 mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5 text-gray-600">
-                                <li>Pharma/Biotech: Bio Farma, Kalbe Farma, Dexa Medica.</li>
-                                <li>Government/Institutes: BRIN, BPOM.</li>
-                            </ul>
+                            <strong class="block mb-1">Industry Landscape:</strong>
+                            <p class="mb-3">Growing domestic production for vaccines and generic drugs (Bio Farma, Kalbe Farma, Dexa Medica, BRIN, BPOM).</p>
                         </div>
                         <div>
-                            <strong class="block text-gray-700 mb-1">Role & Degree Expectations:</strong>
-                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
-                                <li><strong>Formulation Scientist:</strong> Perfect match for your current research. Develops delivery systems (like gastroretentive rafts).</li>
-                                <li><strong>Regulatory Affairs:</strong> High demand to navigate BPOM/international bridging.</li>
-                                <li><strong>Progression:</strong> International BSc is highly respected. MSc helps accelerate to management.</li>
-                            </ul>
+                            <strong class="block mb-1">Roles (Direct match for your profile):</strong>
+                            <p><strong>Formulation Scientist:</strong> Perfect match for your current gastroretentive research. High demand for Regulatory Affairs (bridging BPOM/International).</p>
                         </div>
                     </div>
                 </div>
@@ -245,7 +212,7 @@
         <!-- Tests Tracker Tab -->
         <section id="tests" class="tab-content">
             <h2 class="text-3xl font-bold mb-2 text-gray-800">Tests Progress Tracker</h2>
-            <p class="text-gray-600 mb-6">Log your practice tests to track readiness for official exams. Saved locally.</p>
+            <p class="text-gray-600 mb-6">Log your practice tests to track readiness. Saved locally.</p>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- SAT Section -->
@@ -256,32 +223,19 @@
                     </div>
                     
                     <form id="sat-form" class="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200 text-sm">
-                        <h4 class="font-semibold mb-3">Log a Practice Test</h4>
                         <div class="grid grid-cols-2 gap-3 mb-3">
                             <input type="date" id="sat-date" required class="p-2 border rounded">
-                            <input type="text" id="sat-notes" placeholder="Notes (e.g. Practice Test 4)" required class="p-2 border rounded">
-                            <input type="number" id="sat-rw" placeholder="R&W Score (200-800)" required min="200" max="800" class="p-2 border rounded">
-                            <input type="number" id="sat-math" placeholder="Math Score (200-800)" required min="200" max="800" class="p-2 border rounded">
+                            <input type="text" id="sat-notes" placeholder="Notes (e.g. Practice 4)" required class="p-2 border rounded">
+                            <input type="number" id="sat-rw" placeholder="R&W (200-800)" required min="200" max="800" class="p-2 border rounded">
+                            <input type="number" id="sat-math" placeholder="Math (200-800)" required min="200" max="800" class="p-2 border rounded">
                         </div>
                         <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 font-semibold">Save Attempt</button>
                     </form>
 
-                    <h4 class="font-semibold mb-2">History & Progression</h4>
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left border-collapse">
-                            <thead class="bg-gray-100">
-                                <tr>
-                                    <th class="p-2 border-b">Date</th>
-                                    <th class="p-2 border-b">Total</th>
-                                    <th class="p-2 border-b">R&W</th>
-                                    <th class="p-2 border-b">Math</th>
-                                    <th class="p-2 border-b">Notes</th>
-                                    <th class="p-2 border-b"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="sat-history-body">
-                                <!-- Populated by JS -->
-                            </tbody>
+                            <thead class="bg-gray-100"><tr><th class="p-2 border-b">Date</th><th class="p-2 border-b">Total</th><th class="p-2 border-b">R&W</th><th class="p-2 border-b">Math</th><th class="p-2 border-b">Notes</th><th class="p-2 border-b"></th></tr></thead>
+                            <tbody id="sat-history-body"></tbody>
                         </table>
                     </div>
                 </div>
@@ -294,91 +248,298 @@
                     </div>
                     
                     <form id="ielts-form" class="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200 text-sm">
-                        <h4 class="font-semibold mb-3">Log a Practice Test</h4>
                         <div class="grid grid-cols-2 gap-3 mb-3">
                             <input type="date" id="ielts-date" required class="p-2 border rounded">
                             <input type="text" id="ielts-notes" placeholder="Notes" class="p-2 border rounded">
-                            <input type="number" step="0.5" id="ielts-l" placeholder="Listening (0-9)" required min="0" max="9" class="p-2 border rounded">
-                            <input type="number" step="0.5" id="ielts-r" placeholder="Reading (0-9)" required min="0" max="9" class="p-2 border rounded">
-                            <input type="number" step="0.5" id="ielts-w" placeholder="Writing Est. (0-9)" required min="0" max="9" class="p-2 border rounded">
-                            <input type="number" step="0.5" id="ielts-s" placeholder="Speaking Est. (0-9)" required min="0" max="9" class="p-2 border rounded">
+                            <input type="number" step="0.5" id="ielts-l" placeholder="Listen (0-9)" required min="0" max="9" class="p-2 border rounded">
+                            <input type="number" step="0.5" id="ielts-r" placeholder="Read (0-9)" required min="0" max="9" class="p-2 border rounded">
+                            <input type="number" step="0.5" id="ielts-w" placeholder="Write Est. (0-9)" required min="0" max="9" class="p-2 border rounded">
+                            <input type="number" step="0.5" id="ielts-s" placeholder="Speak Est. (0-9)" required min="0" max="9" class="p-2 border rounded">
                         </div>
                         <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 font-semibold">Save Attempt</button>
                     </form>
 
-                    <h4 class="font-semibold mb-2">History & Progression</h4>
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm text-left border-collapse">
-                            <thead class="bg-gray-100">
-                                <tr>
-                                    <th class="p-2 border-b">Date</th>
-                                    <th class="p-2 border-b">Overall</th>
-                                    <th class="p-2 border-b">L/R/W/S</th>
-                                    <th class="p-2 border-b"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="ielts-history-body">
-                                <!-- Populated by JS -->
-                            </tbody>
+                            <thead class="bg-gray-100"><tr><th class="p-2 border-b">Date</th><th class="p-2 border-b">Overall</th><th class="p-2 border-b">L/R/W/S</th><th class="p-2 border-b"></th></tr></thead>
+                            <tbody id="ielts-history-body"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Placeholder Sections for other tabs (Data rendered via JS logic below) -->
-        <section id="requirements" class="tab-content"><h2 class="text-3xl font-bold mb-4">Requirements & Equivalency</h2><div id="req-content"></div></section>
-        <section id="tuition" class="tab-content"><h2 class="text-3xl font-bold mb-4">Tuition & Scholarships</h2><div id="tuition-content"></div></section>
-        <section id="living" class="tab-content"><h2 class="text-3xl font-bold mb-4">Living Costs</h2><div id="living-content"></div></section>
-        <section id="calendar" class="tab-content"><h2 class="text-3xl font-bold mb-4">Deadline Calendar</h2><div id="calendar-content"></div></section>
-        <section id="checklist" class="tab-content"><h2 class="text-3xl font-bold mb-4">My Application Checklist</h2><div id="checklist-content"></div></section>
+
+        <!-- Calendar Tab -->
+        <section id="calendar" class="tab-content">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">2026-2027 Deadline Calendar</h2>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4 text-sm" id="calendar-content">
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-red-600">Sep 2026</div><div>SAT Registration Deadline (for Oct 3)</div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-red-600">Oct 3, 2026</div><div><strong>SAT Early Attempt</strong> (Scores mid-Oct)</div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Oct 2026</div><div>OUAC Opens (Canada), Studielink Opens (NL)</div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-red-600">Nov 7, 2026</div><div><strong>SAT Main Attempt</strong></div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Nov 2026</div><div>U of T & UBC Early Application Recommended Deadline</div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-green-600">Dec 2026</div><div>Kyoto iUP Application Deadline, UBC Int. Scholars Deadline</div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Jan 2027</div><div>U of T, McGill, Queen's Standard Deadlines; Aalto Deadline</div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-green-600">Feb 2027</div><div>Waseda English STEM Deadline, Tohoku Gateway Deadline</div></div>
+                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Mar 2027</div><div>KU Leuven, Radboud, Groningen (Non-Numerus Fixus) Standard Docs</div></div>
+                <div class="flex pb-2"><div class="w-24 font-bold text-gray-600">May-Jul 2027</div><div>Decisions & Visa Processing</div></div>
+            </div>
+        </section>
+
+        <!-- Checklist Tab -->
+        <section id="checklist" class="tab-content">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">My Application Checklist</h2>
+            <p class="text-gray-600 mb-6">Track your documents. Your progress is saved locally.</p>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div id="interactive-checklist" class="space-y-3 text-sm text-gray-700">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
 
     </main>
 </div>
 
+<!-- ========================================== -->
+<!-- JAVASCRIPT & DATA ENGINE                   -->
+<!-- ========================================== -->
 <script>
-// --- Data State & Persistence ---
-const STORAGE_KEY = 'uniPathExplorerData_v2';
+// --- CORE DATA (All 11 Universities) ---
+const uniData = [
+    {
+        id: "kyoto", region: "Japan", name: "Kyoto University", city: "Kyoto",
+        programs: [
+            { name: "Kyoto iUP", degree: "BSc / BEng", duration: "4.5 yrs", track: "Broad entry -> Specialization. Japanese language taught during prep course.", subjects: "Pharma Sciences, Applied Life Sciences, Biological Sciences." }
+        ],
+        reqs: { curriculum: "Kurikulum Merdeka accepted via Form A/B/C/D.", sat: "Required (No strict cutoff, competitive >1350).", eng: "IELTS 6.5 or TOEFL 90.", docs: ["Transcripts", "Recommendation", "Essays", "iUP Forms"] },
+        tuition: { fees: "¥535,800/yr (approx. IDR 57M)", scholarships: "iUP Scholarship (Full tuition + ¥120k/mo stipend). MEXT Univ Recommendation." },
+        living: { low: "¥90k/mo", med: "¥120k/mo (IDR 13M)", high: "¥150k/mo", desc: "Kyoto is highly affordable compared to Tokyo/North America." }
+    },
+    {
+        id: "tohoku", region: "Japan", name: "Tohoku University", city: "Sendai",
+        programs: [
+            { name: "Gateway College / STEM Route", degree: "BSc / BEng", duration: "4 yrs", track: "English entry -> Later specialization in life sciences/engineering.", subjects: "Chemistry, Physics, Biology labs." }
+        ],
+        reqs: { curriculum: "Merdeka accepted.", sat: "Required.", eng: "IELTS 6.5.", docs: ["Statement of Purpose (400 words)", "Teacher Eval"] },
+        tuition: { fees: "¥535,800/yr (approx. IDR 57M)", scholarships: "Tohoku International Excellence (Tuition waiver), MEXT, JASSO." },
+        living: { low: "¥80k/mo", med: "¥100k/mo (IDR 10.5M)", high: "¥130k/mo", desc: "Sendai is very student-friendly and affordable." }
+    },
+    {
+        id: "waseda", region: "Japan", name: "Waseda University", city: "Tokyo",
+        programs: [
+            { name: "Fundamental/Creative Science & Engineering", degree: "BEng", duration: "4 yrs", track: "Note: English Bioscience (TWIns) discontinued. Focus on Mechanical/Biomedical device engineering.", subjects: "Math, Physics, Eng Design." }
+        ],
+        reqs: { curriculum: "Merdeka accepted.", sat: "Highly Recommended.", eng: "IELTS 6.5.", docs: ["Transcripts", "Essays"] },
+        tuition: { fees: "¥1,700,000/yr (approx. IDR 180M)", scholarships: "Waseda Partial Tuition Waivers (20-100%), JASSO." },
+        living: { low: "¥130k/mo", med: "¥160k/mo (IDR 17M)", high: "¥200k/mo", desc: "Tokyo housing drives costs higher." }
+    },
+    {
+        id: "uoft", region: "Canada", name: "University of Toronto", city: "Toronto",
+        programs: [
+            { name: "Life Sciences (St. George)", degree: "BSc", duration: "4 yrs", track: "General first year -> Major in Pharma/Tox, MolGen.", subjects: "Bio, Chem, Calc." },
+            { name: "Engineering", degree: "BASc", duration: "4 yrs", track: "Chemical Eng (Bioprocess) or EngSci (Biomedical Systems).", subjects: "Heavy Calculus, Physics, Chem, Coding." }
+        ],
+        reqs: { curriculum: "Merdeka accepted, but ENGINEERING STRICTLY REQUIRES SENIOR PHYSICS. May need upgrading.", sat: "Test Optional.", eng: "IELTS 6.5 (Min 6.0/band).", docs: ["Eng Supp App", "Transcripts"] },
+        tuition: { fees: "$65,000 CAD/yr (approx. IDR 750M)", scholarships: "Pearson UNAVAILABLE (No nomination). Active: U of T International Scholar Award (Automatic, up to $100k over 4 yrs), Faculty of Engineering Admission Awards." },
+        living: { low: "$2,000 CAD/mo", med: "$2,500 CAD/mo (IDR 28M)", high: "$3,200 CAD/mo", desc: "Toronto rent is extremely high." }
+    },
+    {
+        id: "ubc", region: "Canada", name: "University of British Columbia", city: "Vancouver",
+        programs: [
+            { name: "Biomedical Engineering / Life Sciences", degree: "BASc / BSc", duration: "4-5 yrs (Co-op)", track: "Direct BME or General BSc.", subjects: "Cell Bio, Biomechanics, Chem." }
+        ],
+        reqs: { curriculum: "Merdeka accepted. Physics 12 REQUIRED for Engineering.", sat: "Test Optional.", eng: "IELTS 6.5.", docs: ["Personal Profile"] },
+        tuition: { fees: "$45,000 - $60,000 CAD/yr", scholarships: "International Scholars Program (Needs separate app/nomination), OIS, IMES." },
+        living: { low: "$2,200 CAD/mo", med: "$2,600 CAD/mo", high: "$3,300 CAD/mo", desc: "Vancouver is Canada's most expensive housing market." }
+    },
+    {
+        id: "mcgill", region: "Canada", name: "McGill University", city: "Montreal",
+        programs: [
+            { name: "Bioengineering / Pharmacology", degree: "BEng / BSc", duration: "4 yrs", track: "Direct entry available.", subjects: "Math, Physics, Bio." }
+        ],
+        reqs: { curriculum: "Merdeka accepted. Physics required for BEng.", sat: "Test Optional.", eng: "IELTS 6.5.", docs: ["Grades heavily weighted."] },
+        tuition: { fees: "$60,000 CAD/yr", scholarships: "Major Entrance Scholarships (Separate app), One-year automatic awards." },
+        living: { low: "$1,500 CAD/mo", med: "$1,800 CAD/mo", high: "$2,200 CAD/mo", desc: "Montreal is significantly cheaper than Toronto/Vancouver." }
+    },
+    {
+        id: "queens", region: "Canada", name: "Queen's University", city: "Kingston",
+        programs: [
+            { name: "Biotechnology / Life Sciences", degree: "BSc", duration: "4 yrs", track: "General Science entry.", subjects: "Bio, Chem, Calc." }
+        ],
+        reqs: { curriculum: "Merdeka accepted.", sat: "Test Optional.", eng: "IELTS 6.5.", docs: ["Supplementary Essay if borderline."] },
+        tuition: { fees: "$55,000 CAD/yr", scholarships: "Automatic International Admission Awards." },
+        living: { low: "$1,600 CAD/mo", med: "$1,900 CAD/mo", high: "$2,400 CAD/mo", desc: "Smaller university town, moderate costs." }
+    },
+    {
+        id: "groningen", region: "Europe", name: "University of Groningen", city: "Groningen, NL",
+        programs: [
+            { name: "Biomedical Engineering / Life Science & Tech", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Heavy Math, Physics, Bio, Chem." }
+        ],
+        reqs: { curriculum: "Merdeka generally considered HAVO. Requires 1 yr of Uni OR Boswell-Bèta/CCVX deficiency exams in Math, Physics, Chem, Bio.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
+        tuition: { fees: "€16,000/yr (approx. IDR 270M)", scholarships: "Undergrad scholarships very rare for non-EU." },
+        living: { low: "€900/mo", med: "€1,200/mo (IDR 20M)", high: "€1,500/mo", desc: "Severe housing shortage; secure dorms early." }
+    },
+    {
+        id: "radboud", region: "Europe", name: "Radboud University", city: "Nijmegen, NL",
+        programs: [
+            { name: "Molecular Life Sciences", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Chemistry, Genetics, Cell Bio." }
+        ],
+        reqs: { curriculum: "Same as Groningen (VWO equivalency needed). Missing subjects require CCVX/Boswell exams.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
+        tuition: { fees: "€15,000/yr (approx. IDR 250M)", scholarships: "Radboud Scholarship Programme (Partial undergrad funding available)." },
+        living: { low: "€900/mo", med: "€1,100/mo", high: "€1,400/mo", desc: "Standard Dutch student city costs." }
+    },
+    {
+        id: "kuleuven", region: "Europe", name: "KU Leuven", city: "Leuven, BE",
+        programs: [
+            { name: "Engineering Technology (Chem/Biochem)", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Math, Chem, Process Eng." }
+        ],
+        reqs: { curriculum: "Merdeka accepted on case-by-case (often requires Math test).", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Motivation letter"] },
+        tuition: { fees: "€7,500/yr (approx. IDR 125M)", scholarships: "Very limited at bachelor level." },
+        living: { low: "€900/mo", med: "€1,100/mo", high: "€1,300/mo", desc: "Highly affordable tuition compared to NL/Canada." }
+    },
+    {
+        id: "aalto", region: "Europe", name: "Aalto University", city: "Espoo, FI",
+        programs: [
+            { name: "Chemical Engineering (Biotech path)", degree: "BSc + MSc", duration: "3+2 yrs", track: "Direct English entry.", subjects: "Chem, Process Tech, Bio." }
+        ],
+        reqs: { curriculum: "Merdeka accepted. Math & Physics heavily evaluated. SAT route highly favored.", sat: "Group 2 admission heavily relies on SAT (Aim 1350+).", eng: "IELTS 6.5.", docs: ["Transcripts"] },
+        tuition: { fees: "€12,000/yr (approx. IDR 200M)", scholarships: "Aalto Excellence (50% or 100% Tuition Waiver) based on grades/SAT." },
+        living: { low: "€800/mo", med: "€1,000/mo", high: "€1,300/mo", desc: "Student housing (HOAS) is heavily subsidized." }
+    }
+];
 
+// --- APP STATE & LOCAL STORAGE ---
+const STORAGE_KEY = 'uniPathExplorer_v3';
 let appState = {
     testHistory: {
         sat: [{ id: 1, date: '2026-05-01', rw: 580, math: 490, total: 1070, notes: 'Official Baseline' }],
         ielts: []
     },
     satTarget: { rw: 700, math: 750, total: 1450 },
-    checklist: {}
+    checklistData: {}
 };
 
-// Load from LocalStorage
-const savedState = localStorage.getItem(STORAGE_KEY);
-if(savedState) {
-    try { appState = JSON.parse(savedState); } catch(e) { console.error("Error loading state"); }
+if(localStorage.getItem(STORAGE_KEY)) {
+    try { appState = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
 }
-
 function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
     updateDashboard();
 }
 
-// --- Navigation Logic ---
+// --- RENDERING LOGIC ---
 function switchTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active', 'bg-gray-100'));
-    
     document.getElementById(tabId).classList.add('active');
     event.currentTarget.classList.add('active');
-    
     if(tabId === 'tests') renderTests();
 }
 
-// --- Tests Tracker Logic ---
+function renderUniversities(filter = 'All') {
+    const container = document.getElementById('uni-list');
+    container.innerHTML = '';
+    
+    // Update filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        if(btn.dataset.filter === filter) {
+            btn.classList.add('bg-blue-600', 'text-white');
+            btn.classList.remove('bg-white', 'text-gray-700');
+        } else {
+            btn.classList.add('bg-white', 'text-gray-700');
+            btn.classList.remove('bg-blue-600', 'text-white');
+        }
+    });
+
+    uniData.filter(u => filter === 'All' || u.region === filter).forEach(u => {
+        let progs = u.programs.map(p => `
+            <div class="mt-3 p-3 bg-gray-50 rounded border border-gray-100">
+                <h4 class="font-bold text-gray-800">${p.name} <span class="text-xs font-normal text-gray-500 bg-gray-200 px-2 py-1 rounded ml-2">${p.degree} | ${p.duration}</span></h4>
+                <p class="text-sm text-gray-600 mt-1"><strong>Track:</strong> ${p.track}</p>
+                <p class="text-sm text-gray-600 mt-1"><strong>Key Subjects:</strong> ${p.subjects}</p>
+            </div>
+        `).join('');
+
+        container.innerHTML += `
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-800">${u.name}</h3>
+                        <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i>${u.city}, ${u.region}</p>
+                    </div>
+                </div>
+                ${progs}
+            </div>
+        `;
+    });
+}
+
+function renderOtherTabs() {
+    // Requirements
+    document.getElementById('req-content').innerHTML = uniData.map(u => `
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">${u.name}</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div><strong class="text-gray-700">Equivalency:</strong> <p class="text-gray-600">${u.reqs.curriculum}</p></div>
+                <div><strong class="text-gray-700">Tests:</strong> <p class="text-gray-600">SAT: ${u.reqs.sat}<br>English: ${u.reqs.eng}</p></div>
+                <div class="md:col-span-2"><strong class="text-gray-700">Required Docs:</strong> <p class="text-gray-600">${u.reqs.docs.join(', ')}</p></div>
+            </div>
+        </div>
+    `).join('');
+
+    // Tuition
+    document.getElementById('tuition-content').innerHTML = uniData.map(u => `
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 flex flex-col md:flex-row gap-4 justify-between">
+            <div class="md:w-1/3">
+                <h3 class="text-lg font-bold text-gray-800">${u.name}</h3>
+                <p class="text-xl font-semibold text-red-600 mt-2">${u.tuition.fees}</p>
+            </div>
+            <div class="md:w-2/3 bg-blue-50 p-3 rounded border border-blue-100">
+                <strong class="text-blue-800 text-sm block mb-1"><i class="fas fa-award mr-1"></i> Active Scholarships:</strong>
+                <p class="text-sm text-blue-900">${u.tuition.scholarships}</p>
+            </div>
+        </div>
+    `).join('');
+
+    // Living
+    document.getElementById('living-content').innerHTML = uniData.map(u => `
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-lg font-bold text-gray-800 mb-1">${u.city}</h3>
+            <p class="text-xs text-gray-500 mb-3">${u.name}</p>
+            <ul class="text-sm space-y-1 text-gray-600 mb-3">
+                <li><span class="font-semibold text-green-600">Low:</span> ${u.living.low}</li>
+                <li><span class="font-semibold text-blue-600">Typical:</span> ${u.living.med}</li>
+                <li><span class="font-semibold text-red-600">High:</span> ${u.living.high}</li>
+            </ul>
+            <p class="text-xs text-gray-500 italic">${u.living.desc}</p>
+        </div>
+    `).join('');
+
+    // Checklist
+    const clItems = ["Passport Ready", "Transcripts Translated", "SAT Reached Target", "IELTS Reached Target", "Teachers Asked for Recs", "Essays Drafted", "Kyoto iUP Forms", "U of T Eng Supp App"];
+    document.getElementById('interactive-checklist').innerHTML = clItems.map((item, i) => `
+        <label class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded cursor-pointer ${appState.checklistData[i] ? 'checked' : ''}">
+            <input type="checkbox" onchange="toggleChecklist(${i}, this)" class="w-5 h-5 text-blue-600 rounded" ${appState.checklistData[i] ? 'checked' : ''}>
+            <span class="font-medium">${item}</span>
+        </label>
+    `).join('');
+}
+
+function filterUnis(filter) {
+    renderUniversities(filter);
+}
+
+function toggleChecklist(index, el) {
+    appState.checklistData[index] = el.checked;
+    el.parentElement.classList.toggle('checked', el.checked);
+    saveState();
+}
+
+// --- TESTS TRACKER LOGIC ---
 function renderTests() {
     const satBody = document.getElementById('sat-history-body');
     satBody.innerHTML = '';
-    
-    // Sort dates descending
     const satData = [...appState.testHistory.sat].sort((a,b) => new Date(b.date) - new Date(a.date));
-    
     satData.forEach(test => {
         satBody.innerHTML += `
             <tr class="border-b hover:bg-gray-50">
@@ -395,7 +556,6 @@ function renderTests() {
     const ieltsBody = document.getElementById('ielts-history-body');
     ieltsBody.innerHTML = '';
     const ieltsData = [...appState.testHistory.ielts].sort((a,b) => new Date(b.date) - new Date(a.date));
-    
     ieltsData.forEach(test => {
         ieltsBody.innerHTML += `
             <tr class="border-b hover:bg-gray-50">
@@ -414,56 +574,26 @@ function deleteTest(type, id) {
     renderTests();
 }
 
-// SAT Form Submit
 document.getElementById('sat-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const rw = parseInt(document.getElementById('sat-rw').value);
     const math = parseInt(document.getElementById('sat-math').value);
-    const total = rw + math;
-    
-    appState.testHistory.sat.push({
-        id: Date.now(),
-        date: document.getElementById('sat-date').value,
-        notes: document.getElementById('sat-notes').value,
-        rw: rw,
-        math: math,
-        total: total
-    });
-    
-    saveState();
-    this.reset();
-    renderTests();
+    appState.testHistory.sat.push({ id: Date.now(), date: document.getElementById('sat-date').value, notes: document.getElementById('sat-notes').value, rw, math, total: rw + math });
+    saveState(); this.reset(); renderTests();
 });
 
-// IELTS Form Submit
 document.getElementById('ielts-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const l = parseFloat(document.getElementById('ielts-l').value);
     const r = parseFloat(document.getElementById('ielts-r').value);
     const w = parseFloat(document.getElementById('ielts-w').value);
     const s = parseFloat(document.getElementById('ielts-s').value);
-    
-    // Standard IELTS rounding (nearest 0.5)
-    let avg = (l + r + w + s) / 4;
-    let remainder = avg % 1;
-    let overall = Math.floor(avg);
-    if(remainder >= 0.75) overall += 1;
-    else if(remainder >= 0.25) overall += 0.5;
-
-    appState.testHistory.ielts.push({
-        id: Date.now(),
-        date: document.getElementById('ielts-date').value,
-        notes: document.getElementById('ielts-notes').value || 'Practice',
-        l: l, r: r, w: w, s: s,
-        overall: overall.toFixed(1)
-    });
-    
-    saveState();
-    this.reset();
-    renderTests();
+    let avg = (l + r + w + s) / 4, remainder = avg % 1, overall = Math.floor(avg);
+    if(remainder >= 0.75) overall += 1; else if(remainder >= 0.25) overall += 0.5;
+    appState.testHistory.ielts.push({ id: Date.now(), date: document.getElementById('ielts-date').value, notes: document.getElementById('ielts-notes').value || 'Practice', l, r, w, s, overall: overall.toFixed(1) });
+    saveState(); this.reset(); renderTests();
 });
 
-// --- Dashboard Logic ---
 function updateDashboard() {
     const dashTests = document.getElementById('dash-tests');
     const satHistory = appState.testHistory.sat;
@@ -473,18 +603,17 @@ function updateDashboard() {
         <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">Test Readiness</h3>
         <p class="text-sm text-gray-600 mb-1"><strong>Latest SAT:</strong> ${latestSat.total} <span class="text-xs text-gray-400">/ Target: ${appState.satTarget.total}</span></p>
         <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-            <div class="bg-blue-600 h-2 rounded-full" style="width: ${latestSat.total !== 'N/A' ? Math.min((latestSat.total/appState.satTarget.total)*100, 100) : 0}%"></div>
+            <div class="bg-blue-600 h-2 rounded-full transition-all" style="width: ${latestSat.total !== 'N/A' ? Math.min((latestSat.total/appState.satTarget.total)*100, 100) : 0}%"></div>
         </div>
-        <p class="text-xs text-gray-500 italic">Log more scores in the Tests Tracker tab to map progress.</p>
+        <p class="text-xs text-gray-500 italic">Log scores in Tests Tracker to map progress.</p>
     `;
 }
 
-// Initialize
+// Init
+renderUniversities('All');
+renderOtherTabs();
 updateDashboard();
-renderTests();
 
-// Complete Static Data Generation (Universities, Requirements) would map here.
-// To ensure immediate functionality, this scaffold delivers the core updates requested.
 </script>
 </body>
 </html>
