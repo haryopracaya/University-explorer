@@ -51,7 +51,7 @@
                     <p class="text-sm text-gray-600"><strong>Target:</strong> 2027 Intake</p>
                     <p class="text-sm text-gray-600"><strong>Grades:</strong> Bio 92, Chem 93, Math 100, Adv Math 90</p>
                     <div class="mt-3 text-xs bg-red-50 text-red-800 p-3 rounded border border-red-200 font-semibold">
-                        <i class="fas fa-exclamation-triangle mr-1"></i> Missing Senior Physics flagged! Equivalency required for U of T Eng, UBC BME, McGill Bioeng, Groningen, Radboud, and Aalto.
+                        <i class="fas fa-exclamation-triangle mr-1"></i> Missing Senior Physics flagged! Equivalency required for U of T Eng, UBC BME, McGill Bioeng, UQ BEng, Groningen, Radboud, and Aalto.
                     </div>
                 </div>
                 <!-- Test Readiness -->
@@ -64,7 +64,7 @@
                     <ul class="text-sm space-y-2 text-gray-600">
                         <li><span class="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span><strong>Oct 3, 2026:</strong> SAT Early Attempt</li>
                         <li><span class="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span><strong>Nov 7, 2026:</strong> SAT Main Attempt</li>
-                        <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Nov 2026:</strong> U of T Early App Deadline</li>
+                        <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Nov 30, 2026:</strong> UQ Australia Deadline</li>
                         <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Dec 2026:</strong> Kyoto iUP Deadline</li>
                     </ul>
                 </div>
@@ -75,10 +75,11 @@
         <section id="universities" class="tab-content">
             <h2 class="text-3xl font-bold mb-6 text-gray-800">Programs & Academics</h2>
             <div class="mb-6 flex flex-wrap gap-2" id="uni-filters">
-                <button onclick="filterUnis('All')" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold transition filter-btn" data-filter="All">All Regions</button>
+                <button onclick="filterUnis('All')" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold transition filter-btn" data-filter="All">All Regions (12)</button>
                 <button onclick="filterUnis('Japan')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Japan">Japan (3)</button>
                 <button onclick="filterUnis('Europe')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Europe">Europe (4)</button>
                 <button onclick="filterUnis('Canada')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Canada">Canada (4)</button>
+                <button onclick="filterUnis('Australia')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Australia">Australia (1)</button>
             </div>
             <div id="uni-list" class="space-y-6">
                 <!-- Rendered by JS -->
@@ -97,7 +98,7 @@
         <!-- Tuition Tab -->
         <section id="tuition" class="tab-content">
             <h2 class="text-3xl font-bold mb-2 text-gray-800">Tuition & Scholarships</h2>
-            <p class="text-gray-600 mb-6">Estimated annual costs and active undergraduate scholarships (Pearson removed per request).</p>
+            <p class="text-gray-600 mb-6">Estimated annual costs and active undergraduate scholarships.</p>
             <div id="tuition-content" class="space-y-6">
                 <!-- Rendered by JS -->
             </div>
@@ -118,6 +119,27 @@
             <p class="text-gray-600 mb-6">Global industry landscapes for biotechnology, biomedical engineering, and pharma.</p>
             
             <div class="space-y-6">
+                <!-- Australia -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-teal-50 border-b border-teal-100 p-4"><h3 class="font-bold text-xl text-teal-800"><i class="fas fa-kangaroo mr-2"></i>Australia (Brisbane)</h3></div>
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div>
+                            <strong class="block mb-1">Industry Landscape:</strong>
+                            <p class="mb-3">Major life-sciences and medical device hubs, especially in Brisbane (Translational Research Institute, Vaxxas). National champions include Cochlear, CSL, and ResMed. Strong ecosystem for clinical trials and bioprocessing.</p>
+                            <strong class="block mb-1">Typical Employers:</strong>
+                            <ul class="list-disc pl-5"><li>MedTech: Cochlear, ResMed, Stryker.</li><li>Biotech/Pharma: CSL, Vaxxas, Patheon.</li><li>Hospitals: QLD Health Clinical Engineering.</li></ul>
+                        </div>
+                        <div>
+                            <strong class="block mb-1">Roles (Progression):</strong>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li><strong>BEng (Biomedical):</strong> Medical Device Engineer, Clinical Engineer in hospitals, Quality/Regulatory Specialist. (Often engineering design or equipment management).</li>
+                                <li><strong>BSc/BBiotech:</strong> Bioprocess Scientist, Clinical Trials Assistant, Lab Technician. (Wet lab, biomanufacturing).</li>
+                                <li><strong>MSc / PhD:</strong> Required for Senior R&D Scientist or Principal Investigator roles.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Canada -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <div class="bg-red-50 border-b border-red-100 p-4"><h3 class="font-bold text-xl text-red-800"><i class="fab fa-canadian-maple-leaf mr-2"></i>Canada (Toronto, Vancouver, Montreal)</h3></div>
@@ -146,8 +168,6 @@
                         <div>
                             <strong class="block mb-1">Industry Landscape:</strong>
                             <p class="mb-3">European powerhouse for clinical trials and medical technology. High density of life sciences parks (e.g., Leiden Bio Science Park).</p>
-                            <strong class="block mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5"><li>MedTech: Philips Healthcare.</li><li>Biotech: Janssen, Galapagos.</li></ul>
                         </div>
                         <div>
                             <strong class="block mb-1">Roles (Progression):</strong>
@@ -165,44 +185,32 @@
                         <div class="bg-blue-50 border-b border-blue-100 p-4"><h3 class="font-bold text-lg text-blue-800"><i class="fas fa-snowflake mr-2"></i>Finland (Espoo)</h3></div>
                         <div class="p-4 text-sm text-gray-700">
                             <p class="mb-2"><strong>Focus:</strong> Digital health, wearables, biomaterials (GE Healthcare, Oura). Highly interdisciplinary.</p>
-                            <p><strong>Roles:</strong> Bioengineers here often code (Python) alongside wet-lab work. BSc+MSc is the standard entry requirement.</p>
+                            <p><strong>Roles:</strong> Bioengineers here often code (Python) alongside wet-lab work. BSc+MSc is standard entry.</p>
                         </div>
                     </div>
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                         <div class="bg-yellow-50 border-b border-yellow-100 p-4"><h3 class="font-bold text-lg text-yellow-800"><i class="fas fa-landmark mr-2"></i>Belgium (Leuven)</h3></div>
                         <div class="p-4 text-sm text-gray-700">
                             <p class="mb-2"><strong>Focus:</strong> Biopharma manufacturing and scale-up (Pfizer, GSK, UCB). Flanders heavily subsidizes biotech.</p>
-                            <p><strong>Roles:</strong> Massive demand for Bioprocess and Chemical Engineers to manage vaccine/drug manufacturing floors.</p>
+                            <p><strong>Roles:</strong> Massive demand for Bioprocess and Chemical Engineers to manage vaccine/drug floors.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Japan -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-pink-50 border-b border-pink-100 p-4"><h3 class="font-bold text-xl text-pink-800"><i class="fas fa-torii-gate mr-2"></i>Japan (Kyoto, Tokyo, Sendai)</h3></div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
-                        <div>
-                            <strong class="block mb-1">Industry Landscape:</strong>
-                            <p class="mb-3">Global leaders in regenerative medicine (iPS cells), robotics, and fermentation. Employers: Takeda, Astellas, Olympus, RIKEN.</p>
-                        </div>
-                        <div>
-                            <strong class="block mb-1">Roles:</strong>
-                            <p>MSc is virtually mandatory for R&D in major Japanese corporations. Japanese fluency (JLPT N2/N1) is critical for corporate integration, though academic lab environments are English-friendly.</p>
+                <!-- Japan & Indonesia -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div class="bg-pink-50 border-b border-pink-100 p-4"><h3 class="font-bold text-lg text-pink-800"><i class="fas fa-torii-gate mr-2"></i>Japan</h3></div>
+                        <div class="p-4 text-sm text-gray-700">
+                            <p class="mb-2"><strong>Focus:</strong> Regenerative medicine, robotics, bioprocessing (Takeda, Astellas, Olympus).</p>
+                            <p><strong>Roles:</strong> MSc virtually mandatory for R&D. Japanese fluency (JLPT N2/N1) critical for corporate integration.</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Indonesia -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-green-50 border-b border-green-100 p-4"><h3 class="font-bold text-xl text-green-800"><i class="fas fa-map-marker-alt mr-2"></i>Indonesia (Returning Home)</h3></div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
-                        <div>
-                            <strong class="block mb-1">Industry Landscape:</strong>
-                            <p class="mb-3">Growing domestic production for vaccines and generic drugs (Bio Farma, Kalbe Farma, Dexa Medica, BRIN, BPOM).</p>
-                        </div>
-                        <div>
-                            <strong class="block mb-1">Roles (Direct match for your profile):</strong>
-                            <p><strong>Formulation Scientist:</strong> Perfect match for your current gastroretentive research. High demand for Regulatory Affairs (bridging BPOM/International).</p>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div class="bg-green-50 border-b border-green-100 p-4"><h3 class="font-bold text-lg text-green-800"><i class="fas fa-map-marker-alt mr-2"></i>Indonesia</h3></div>
+                        <div class="p-4 text-sm text-gray-700">
+                            <p class="mb-2"><strong>Focus:</strong> Domestic vaccine/generic drug production (Bio Farma, Kalbe, Dexa).</p>
+                            <p><strong>Roles:</strong> Formulation Scientist (direct match for gastroretentive research), Regulatory Affairs bridging BPOM.</p>
                         </div>
                     </div>
                 </div>
@@ -212,7 +220,7 @@
         <!-- Tests Tracker Tab -->
         <section id="tests" class="tab-content">
             <h2 class="text-3xl font-bold mb-2 text-gray-800">Tests Progress Tracker</h2>
-            <p class="text-gray-600 mb-6">Log your practice tests to track readiness. Saved locally.</p>
+            <p class="text-gray-600 mb-6">Log your practice tests to track readiness against program minimums.</p>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- SAT Section -->
@@ -278,11 +286,12 @@
                 <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Oct 2026</div><div>OUAC Opens (Canada), Studielink Opens (NL)</div></div>
                 <div class="flex border-b pb-2"><div class="w-24 font-bold text-red-600">Nov 7, 2026</div><div><strong>SAT Main Attempt</strong></div></div>
                 <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Nov 2026</div><div>U of T & UBC Early Application Recommended Deadline</div></div>
+                <div class="flex border-b pb-2 bg-yellow-50 p-2 rounded"><div class="w-24 font-bold text-orange-600">Nov 30, 2026</div><div><strong>UQ (Australia) General Direct Application Deadline</strong> (Semester 1, 2027)</div></div>
                 <div class="flex border-b pb-2"><div class="w-24 font-bold text-green-600">Dec 2026</div><div>Kyoto iUP Application Deadline, UBC Int. Scholars Deadline</div></div>
                 <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Jan 2027</div><div>U of T, McGill, Queen's Standard Deadlines; Aalto Deadline</div></div>
                 <div class="flex border-b pb-2"><div class="w-24 font-bold text-green-600">Feb 2027</div><div>Waseda English STEM Deadline, Tohoku Gateway Deadline</div></div>
                 <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Mar 2027</div><div>KU Leuven, Radboud, Groningen (Non-Numerus Fixus) Standard Docs</div></div>
-                <div class="flex pb-2"><div class="w-24 font-bold text-gray-600">May-Jul 2027</div><div>Decisions & Visa Processing</div></div>
+                <div class="flex pb-2"><div class="w-24 font-bold text-gray-600">May-Jul 2027</div><div>Decisions & Visa / Study Permit Processing</div></div>
             </div>
         </section>
 
@@ -304,21 +313,21 @@
 <!-- JAVASCRIPT & DATA ENGINE                   -->
 <!-- ========================================== -->
 <script>
-// --- CORE DATA (All 11 Universities) ---
+// --- CORE DATA (All 12 Universities including UQ) ---
 const uniData = [
     {
         id: "kyoto", region: "Japan", name: "Kyoto University", city: "Kyoto",
         programs: [
-            { name: "Kyoto iUP", degree: "BSc / BEng", duration: "4.5 yrs", track: "Broad entry -> Specialization. Japanese language taught during prep course.", subjects: "Pharma Sciences, Applied Life Sciences, Biological Sciences." }
+            { name: "Kyoto iUP", degree: "BSc / BEng", duration: "4.5 yrs", track: "Broad entry -> Specialization. Japanese taught during prep.", subjects: "Pharma, Applied Life Sciences, Biological Sciences." }
         ],
-        reqs: { curriculum: "Kurikulum Merdeka accepted via Form A/B/C/D.", sat: "Required (No strict cutoff, competitive >1350).", eng: "IELTS 6.5 or TOEFL 90.", docs: ["Transcripts", "Recommendation", "Essays", "iUP Forms"] },
+        reqs: { curriculum: "Kurikulum Merdeka accepted via Form A/B/C/D.", sat: "Required (Competitive >1350).", eng: "IELTS 6.5 or TOEFL 90.", docs: ["Transcripts", "Recommendation", "Essays", "iUP Forms"] },
         tuition: { fees: "¥535,800/yr (approx. IDR 57M)", scholarships: "iUP Scholarship (Full tuition + ¥120k/mo stipend). MEXT Univ Recommendation." },
         living: { low: "¥90k/mo", med: "¥120k/mo (IDR 13M)", high: "¥150k/mo", desc: "Kyoto is highly affordable compared to Tokyo/North America." }
     },
     {
         id: "tohoku", region: "Japan", name: "Tohoku University", city: "Sendai",
         programs: [
-            { name: "Gateway College / STEM Route", degree: "BSc / BEng", duration: "4 yrs", track: "English entry -> Later specialization in life sciences/engineering.", subjects: "Chemistry, Physics, Biology labs." }
+            { name: "Gateway College / STEM Route", degree: "BSc / BEng", duration: "4 yrs", track: "English entry -> Late specialization in life sciences/engineering.", subjects: "Chemistry, Physics, Biology labs." }
         ],
         reqs: { curriculum: "Merdeka accepted.", sat: "Required.", eng: "IELTS 6.5.", docs: ["Statement of Purpose (400 words)", "Teacher Eval"] },
         tuition: { fees: "¥535,800/yr (approx. IDR 57M)", scholarships: "Tohoku International Excellence (Tuition waiver), MEXT, JASSO." },
@@ -327,7 +336,7 @@ const uniData = [
     {
         id: "waseda", region: "Japan", name: "Waseda University", city: "Tokyo",
         programs: [
-            { name: "Fundamental/Creative Science & Engineering", degree: "BEng", duration: "4 yrs", track: "Note: English Bioscience (TWIns) discontinued. Focus on Mechanical/Biomedical device engineering.", subjects: "Math, Physics, Eng Design." }
+            { name: "Fundamental/Creative Science & Engineering", degree: "BEng", duration: "4 yrs", track: "English Bioscience discontinued. Focus on Mechanical/Biomedical device.", subjects: "Math, Physics, Eng Design." }
         ],
         reqs: { curriculum: "Merdeka accepted.", sat: "Highly Recommended.", eng: "IELTS 6.5.", docs: ["Transcripts", "Essays"] },
         tuition: { fees: "¥1,700,000/yr (approx. IDR 180M)", scholarships: "Waseda Partial Tuition Waivers (20-100%), JASSO." },
@@ -339,8 +348,8 @@ const uniData = [
             { name: "Life Sciences (St. George)", degree: "BSc", duration: "4 yrs", track: "General first year -> Major in Pharma/Tox, MolGen.", subjects: "Bio, Chem, Calc." },
             { name: "Engineering", degree: "BASc", duration: "4 yrs", track: "Chemical Eng (Bioprocess) or EngSci (Biomedical Systems).", subjects: "Heavy Calculus, Physics, Chem, Coding." }
         ],
-        reqs: { curriculum: "Merdeka accepted, but ENGINEERING STRICTLY REQUIRES SENIOR PHYSICS. May need upgrading.", sat: "Test Optional.", eng: "IELTS 6.5 (Min 6.0/band).", docs: ["Eng Supp App", "Transcripts"] },
-        tuition: { fees: "$65,000 CAD/yr (approx. IDR 750M)", scholarships: "Pearson UNAVAILABLE (No nomination). Active: U of T International Scholar Award (Automatic, up to $100k over 4 yrs), Faculty of Engineering Admission Awards." },
+        reqs: { curriculum: "Merdeka accepted, but ENGINEERING REQUIRES SENIOR PHYSICS.", sat: "Test Optional.", eng: "IELTS 6.5 (Min 6.0/band).", docs: ["Eng Supp App", "Transcripts"] },
+        tuition: { fees: "$65,000 CAD/yr (approx. IDR 750M)", scholarships: "Pearson UNAVAILABLE (No nomination). Active: U of T International Scholar Award, Faculty of Engineering Admission Awards." },
         living: { low: "$2,000 CAD/mo", med: "$2,500 CAD/mo (IDR 28M)", high: "$3,200 CAD/mo", desc: "Toronto rent is extremely high." }
     },
     {
@@ -375,7 +384,7 @@ const uniData = [
         programs: [
             { name: "Biomedical Engineering / Life Science & Tech", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Heavy Math, Physics, Bio, Chem." }
         ],
-        reqs: { curriculum: "Merdeka generally considered HAVO. Requires 1 yr of Uni OR Boswell-Bèta/CCVX deficiency exams in Math, Physics, Chem, Bio.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
+        reqs: { curriculum: "Merdeka generally considered HAVO. Requires 1 yr Uni OR Boswell-Bèta deficiency exams in Math, Physics, Chem, Bio.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
         tuition: { fees: "€16,000/yr (approx. IDR 270M)", scholarships: "Undergrad scholarships very rare for non-EU." },
         living: { low: "€900/mo", med: "€1,200/mo (IDR 20M)", high: "€1,500/mo", desc: "Severe housing shortage; secure dorms early." }
     },
@@ -384,7 +393,7 @@ const uniData = [
         programs: [
             { name: "Molecular Life Sciences", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Chemistry, Genetics, Cell Bio." }
         ],
-        reqs: { curriculum: "Same as Groningen (VWO equivalency needed). Missing subjects require CCVX/Boswell exams.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
+        reqs: { curriculum: "Same as Groningen (VWO equivalency needed). Missing subjects require CCVX/Boswell.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
         tuition: { fees: "€15,000/yr (approx. IDR 250M)", scholarships: "Radboud Scholarship Programme (Partial undergrad funding available)." },
         living: { low: "€900/mo", med: "€1,100/mo", high: "€1,400/mo", desc: "Standard Dutch student city costs." }
     },
@@ -393,7 +402,7 @@ const uniData = [
         programs: [
             { name: "Engineering Technology (Chem/Biochem)", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Math, Chem, Process Eng." }
         ],
-        reqs: { curriculum: "Merdeka accepted on case-by-case (often requires Math test).", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Motivation letter"] },
+        reqs: { curriculum: "Merdeka accepted case-by-case (often requires Math test).", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Motivation letter"] },
         tuition: { fees: "€7,500/yr (approx. IDR 125M)", scholarships: "Very limited at bachelor level." },
         living: { low: "€900/mo", med: "€1,100/mo", high: "€1,300/mo", desc: "Highly affordable tuition compared to NL/Canada." }
     },
@@ -402,14 +411,25 @@ const uniData = [
         programs: [
             { name: "Chemical Engineering (Biotech path)", degree: "BSc + MSc", duration: "3+2 yrs", track: "Direct English entry.", subjects: "Chem, Process Tech, Bio." }
         ],
-        reqs: { curriculum: "Merdeka accepted. Math & Physics heavily evaluated. SAT route highly favored.", sat: "Group 2 admission heavily relies on SAT (Aim 1350+).", eng: "IELTS 6.5.", docs: ["Transcripts"] },
+        reqs: { curriculum: "Merdeka accepted. Math & Physics evaluated. SAT route highly favored.", sat: "Group 2 admission heavily relies on SAT (Aim 1350+).", eng: "IELTS 6.5.", docs: ["Transcripts"] },
         tuition: { fees: "€12,000/yr (approx. IDR 200M)", scholarships: "Aalto Excellence (50% or 100% Tuition Waiver) based on grades/SAT." },
         living: { low: "€800/mo", med: "€1,000/mo", high: "€1,300/mo", desc: "Student housing (HOAS) is heavily subsidized." }
+    },
+    {
+        id: "uq", region: "Australia", name: "The University of Queensland (UQ)", city: "Brisbane, QLD",
+        programs: [
+            { name: "Biomedical Engineering", degree: "BEng (Honours)", duration: "4 yrs", track: "Direct entry. MedTech, biomaterials, diagnostics.", subjects: "Math, Physics, Chem." },
+            { name: "Biotechnology (Medical Biotech)", degree: "BBiotech (Hons)", duration: "4 yrs", track: "Direct entry. Pharmacology, drug design, genetics.", subjects: "Chem, Bio, Math." },
+            { name: "Engineering / Biotech Dual Degree", degree: "BEng(Hons) / BBiotech", duration: "5 yrs", track: "Direct entry. Interdisciplinary medical device & bioprocess.", subjects: "Math, Physics, Chem, Bio." }
+        ],
+        reqs: { curriculum: "Merdeka accepted. Calculated to ATAR. Math & Chem required. Physics REQUIRED for Engineering routes.", sat: "Not Used / Alternative (SMA directly assessed).", eng: "IELTS 6.5 (Min 6.0/band).", docs: ["Transcripts", "English Score", "Passport", "Direct application or Agent"] },
+        tuition: { fees: "~$58,056 AUD/yr (approx. IDR 600M)", scholarships: "UQ International High Achievers (20% reduction), EAIT Faculty Awards. (Note: Australia Awards S1 not applicable for Indonesia)." },
+        living: { low: "$2,000 AUD/mo", med: "$2,500 AUD/mo (IDR 26M)", high: "$3,200 AUD/mo", desc: "Requires OSHC health cover upfront. Moderate Australian city cost." }
     }
 ];
 
 // --- APP STATE & LOCAL STORAGE ---
-const STORAGE_KEY = 'uniPathExplorer_v3';
+const STORAGE_KEY = 'uniPathExplorer_v4';
 let appState = {
     testHistory: {
         sat: [{ id: 1, date: '2026-05-01', rw: 580, math: 490, total: 1070, notes: 'Official Baseline' }],
@@ -516,7 +536,7 @@ function renderOtherTabs() {
     `).join('');
 
     // Checklist
-    const clItems = ["Passport Ready", "Transcripts Translated", "SAT Reached Target", "IELTS Reached Target", "Teachers Asked for Recs", "Essays Drafted", "Kyoto iUP Forms", "U of T Eng Supp App"];
+    const clItems = ["Passport Ready", "Transcripts Translated", "SAT Reached Target", "IELTS Reached Target", "Teachers Asked for Recs", "Essays Drafted", "Kyoto iUP Forms", "U of T Eng Supp App", "UQ Direct/Agent App Started"];
     document.getElementById('interactive-checklist').innerHTML = clItems.map((item, i) => `
         <label class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded cursor-pointer ${appState.checklistData[i] ? 'checked' : ''}">
             <input type="checkbox" onchange="toggleChecklist(${i}, this)" class="w-5 h-5 text-blue-600 rounded" ${appState.checklistData[i] ? 'checked' : ''}>
