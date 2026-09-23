@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Path Explorer - Complete</title>
+    <title>University Path Explorer - Strategy Update</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -25,15 +25,19 @@
     <nav class="w-full md:w-64 bg-white border-r border-gray-200 md:min-h-screen flex-shrink-0 sticky top-0 z-10 p-4 overflow-y-auto" style="max-height: 100vh;">
         <h1 class="text-xl font-bold text-gray-800 mb-6 px-2"><i class="fas fa-graduation-cap text-blue-600 mr-2"></i>Uni Explorer</h1>
         <ul class="space-y-1" id="nav-menu">
-            <li><button onclick="switchTab('dashboard')" class="nav-item active w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-home w-6"></i> Dashboard</button></li>
-            <li><button onclick="switchTab('universities')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-university w-6"></i> Universities</button></li>
-            <li><button onclick="switchTab('requirements')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-list-check w-6"></i> Requirements</button></li>
-            <li><button onclick="switchTab('tuition')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-money-bill-wave w-6"></i> Tuition & Aid</button></li>
-            <li><button onclick="switchTab('living')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-house w-6"></i> Living Cost</button></li>
-            <li><button onclick="switchTab('workspace')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-briefcase w-6"></i> Workspace</button></li>
-            <li><button onclick="switchTab('tests')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-pen-nib w-6"></i> Tests Tracker</button></li>
-            <li><button onclick="switchTab('calendar')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-calendar w-6"></i> Calendar</button></li>
-            <li><button onclick="switchTab('checklist')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-check-square w-6"></i> My Checklist</button></li>
+            <li><button onclick="switchTab('dashboard')" class="nav-item active w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-home w-5"></i> Dashboard</button></li>
+            
+            <div class="mt-4 mb-1 px-4 text-xs font-bold text-gray-400 uppercase">Folders</div>
+            <li><button onclick="switchTab('active-targets')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-star text-yellow-500 w-5"></i> Active Targets</button></li>
+            <li><button onclick="switchTab('europe-options')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-folder text-blue-400 w-5"></i> Europe (Secondary)</button></li>
+            <li><button onclick="switchTab('canada-options')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-folder text-red-400 w-5"></i> Canada (Reach)</button></li>
+
+            <div class="mt-4 mb-1 px-4 text-xs font-bold text-gray-400 uppercase">Research & Tools</div>
+            <li><button onclick="switchTab('workspace')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-briefcase w-5"></i> Career & Workspace</button></li>
+            <li><button onclick="switchTab('family-view')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-users w-5"></i> Family View</button></li>
+            <li><button onclick="switchTab('readiness')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-brain w-5"></i> Academic Readiness</button></li>
+            <li><button onclick="switchTab('tests')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-pen-nib w-5"></i> Tests Tracker</button></li>
+            <li><button onclick="switchTab('calendar')" class="nav-item w-full text-left px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition"><i class="fas fa-calendar w-5"></i> Deadline Calendar</button></li>
         </ul>
     </nav>
 
@@ -42,177 +46,187 @@
         
         <!-- Dashboard Tab -->
         <section id="dashboard" class="tab-content active">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Dashboard</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Profile Snippet -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">My Profile</h3>
-                    <p class="text-sm text-gray-600"><strong>Curriculum:</strong> Kurikulum Merdeka (Grade 12)</p>
-                    <p class="text-sm text-gray-600"><strong>Target:</strong> 2027 Intake</p>
-                    <p class="text-sm text-gray-600"><strong>Grades:</strong> Bio 92, Chem 93, Math 100, Adv Math 90</p>
-                    <div class="mt-3 text-xs bg-red-50 text-red-800 p-3 rounded border border-red-200 font-semibold">
-                        <i class="fas fa-exclamation-triangle mr-1"></i> Missing Senior Physics flagged! Equivalency required for U of T Eng, UBC BME, McGill Bioeng, UQ BEng, Groningen, Radboud, and Aalto.
-                    </div>
-                </div>
-                <!-- Test Readiness -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200" id="dash-tests">
-                    <!-- Populated by JS -->
-                </div>
-                <!-- Deadlines -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">Upcoming Action Items</h3>
-                    <ul class="text-sm space-y-2 text-gray-600">
-                        <li><span class="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span><strong>Oct 3, 2026:</strong> SAT Early Attempt</li>
-                        <li><span class="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span><strong>Nov 7, 2026:</strong> SAT Main Attempt</li>
-                        <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Nov 30, 2026:</strong> UQ Australia Deadline</li>
-                        <li><span class="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span><strong>Dec 2026:</strong> Kyoto iUP Deadline</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Universities Tab -->
-        <section id="universities" class="tab-content">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Programs & Academics</h2>
-            <div class="mb-6 flex flex-wrap gap-2" id="uni-filters">
-                <button onclick="filterUnis('All')" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold transition filter-btn" data-filter="All">All Regions (12)</button>
-                <button onclick="filterUnis('Japan')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Japan">Japan (3)</button>
-                <button onclick="filterUnis('Europe')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Europe">Europe (4)</button>
-                <button onclick="filterUnis('Canada')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Canada">Canada (4)</button>
-                <button onclick="filterUnis('Australia')" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 rounded-full text-sm font-semibold transition filter-btn" data-filter="Australia">Australia (1)</button>
-            </div>
-            <div id="uni-list" class="space-y-6">
-                <!-- Rendered by JS -->
-            </div>
-        </section>
-
-        <!-- Requirements Tab -->
-        <section id="requirements" class="tab-content">
-            <h2 class="text-3xl font-bold mb-2 text-gray-800">Requirements & Equivalency</h2>
-            <p class="text-gray-600 mb-6">Kurikulum Merdeka equivalency, subject prerequisites (Physics flag), and required documents.</p>
-            <div id="req-content" class="space-y-6">
-                <!-- Rendered by JS -->
-            </div>
-        </section>
-
-        <!-- Tuition Tab -->
-        <section id="tuition" class="tab-content">
-            <h2 class="text-3xl font-bold mb-2 text-gray-800">Tuition & Scholarships</h2>
-            <p class="text-gray-600 mb-6">Estimated annual costs and active undergraduate scholarships.</p>
-            <div id="tuition-content" class="space-y-6">
-                <!-- Rendered by JS -->
-            </div>
-        </section>
-
-        <!-- Living Cost Tab -->
-        <section id="living" class="tab-content">
-            <h2 class="text-3xl font-bold mb-2 text-gray-800">Living Costs</h2>
-            <p class="text-gray-600 mb-6">Estimated monthly and annual living expenses by city.</p>
-            <div id="living-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Rendered by JS -->
-            </div>
-        </section>
-
-        <!-- Workspace Tab -->
-        <section id="workspace" class="tab-content">
-            <h2 class="text-3xl font-bold mb-2 text-gray-800">Career & Workspace</h2>
-            <p class="text-gray-600 mb-6">Global industry landscapes for biotechnology, biomedical engineering, and pharma.</p>
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Strategy Dashboard (Active Targets)</h2>
             
-            <div class="space-y-6">
-                <!-- Australia -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 p-6 rounded-xl shadow-sm mb-8">
+                <h3 class="font-bold text-blue-900 mb-3 text-lg"><i class="fas fa-chess-knight mr-2"></i>Current Application Strategy</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+                    <div class="bg-white p-3 rounded shadow-sm border border-gray-100">
+                        <strong class="text-gray-700 block mb-1">🇮🇩 Indonesia Anchor</strong>
+                        <p class="text-gray-600">UI Teknik Biomedik (SNBP/SNBT/SIMAK). <em>Note: No KKI.</em></p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm border border-gray-100">
+                        <strong class="text-gray-700 block mb-1">🇸🇬 Main Int'l (ASEAN)</strong>
+                        <p class="text-gray-600">NUS & NTU. Proximity + ASEAN scholarships.</p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm border border-gray-100">
+                        <strong class="text-gray-700 block mb-1">🇯🇵 Scholarship Focus</strong>
+                        <p class="text-gray-600">Kyoto (iUP), Tohoku, Waseda. Separated by Biotech/MedTech lanes.</p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm border border-gray-100">
+                        <strong class="text-gray-700 block mb-1">🇲🇾🇦🇺 Conditional</strong>
+                        <p class="text-gray-600">UQ & Monash MY (Y3-4 in AU). Heavily scholarship dependent.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="font-bold text-xl text-gray-800 mb-4">Active Applications Status</h3>
+            <div id="dash-active-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- Active Targets Folder -->
+        <section id="active-targets" class="tab-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800"><i class="fas fa-star text-yellow-500 mr-2"></i>Active Targets</h2>
+            </div>
+            <div id="active-list" class="space-y-8"></div>
+        </section>
+
+        <!-- Europe Folder -->
+        <section id="europe-options" class="tab-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800"><i class="fas fa-folder text-blue-400 mr-2"></i>Europe - Secondary Options</h2>
+            </div>
+            <p class="text-gray-600 mb-6">These universities are preserved with full research but deprioritized from active planning.</p>
+            <div id="europe-list" class="space-y-8"></div>
+        </section>
+
+        <!-- Canada Folder -->
+        <section id="canada-options" class="tab-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800"><i class="fas fa-folder text-red-400 mr-2"></i>Canada - Financial Reach</h2>
+            </div>
+            <p class="text-gray-600 mb-6">These universities are preserved for reference. <em>Note: UofT Pearson Scholarship is unavailable.</em></p>
+            <div id="canada-list" class="space-y-8"></div>
+        </section>
+
+        <!-- Career & Workspace -->
+        <section id="workspace" class="tab-content">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Global Career & Workspace</h2>
+            <p class="text-gray-600 mb-6">Industry landscapes expanded to include ASEAN and Indonesian return pathways.</p>
+            <div id="workspace-content" class="space-y-6">
+                <!-- Singapore -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-teal-50 border-b border-teal-100 p-4"><h3 class="font-bold text-xl text-teal-800"><i class="fas fa-kangaroo mr-2"></i>Australia (Brisbane)</h3></div>
+                    <div class="bg-red-50 border-b border-red-100 p-4"><h3 class="font-bold text-xl text-red-800"><i class="fab fa-galactic-senate mr-2"></i>Singapore (NUS / NTU grads)</h3></div>
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <div>
                             <strong class="block mb-1">Industry Landscape:</strong>
-                            <p class="mb-3">Major life-sciences and medical device hubs, especially in Brisbane (Translational Research Institute, Vaxxas). National champions include Cochlear, CSL, and ResMed. Strong ecosystem for clinical trials and bioprocessing.</p>
+                            <p class="mb-3">Major hub for MedTech manufacturing, Biotech R&D, and Clinical Research. Government heavily funds A*STAR research institutes.</p>
                             <strong class="block mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5"><li>MedTech: Cochlear, ResMed, Stryker.</li><li>Biotech/Pharma: CSL, Vaxxas, Patheon.</li><li>Hospitals: QLD Health Clinical Engineering.</li></ul>
+                            <ul class="list-disc pl-5"><li>MedTech: Medtronic, Edwards Lifesciences, Thermo Fisher.</li><li>Pharma/Biotech: GSK, Sanofi.</li><li>Institutes: A*STAR, NUHS, SingHealth.</li></ul>
                         </div>
                         <div>
                             <strong class="block mb-1">Roles (Progression):</strong>
                             <ul class="list-disc pl-5 space-y-1">
-                                <li><strong>BEng (Biomedical):</strong> Medical Device Engineer, Clinical Engineer in hospitals, Quality/Regulatory Specialist. (Often engineering design or equipment management).</li>
-                                <li><strong>BSc/BBiotech:</strong> Bioprocess Scientist, Clinical Trials Assistant, Lab Technician. (Wet lab, biomanufacturing).</li>
-                                <li><strong>MSc / PhD:</strong> Required for Senior R&D Scientist or Principal Investigator roles.</li>
+                                <li><strong>BEng/BioEng:</strong> Process Engineer, QA/QC, Clinical Engineer (Hospital), Product Specialist.</li>
+                                <li><strong>MSc/PhD:</strong> R&D Scientist (A*STAR requires PhD for independent PI roles).</li>
                             </ul>
+                            <p class="mt-2 text-xs bg-red-100 text-red-800 p-2 rounded border border-red-200">Note: If under MOE Tuition Grant, you must work in a Singapore-registered company for 3 years post-graduation.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Canada -->
+                <!-- Indonesia -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-red-50 border-b border-red-100 p-4"><h3 class="font-bold text-xl text-red-800"><i class="fab fa-canadian-maple-leaf mr-2"></i>Canada (Toronto, Vancouver, Montreal)</h3></div>
+                    <div class="bg-green-50 border-b border-green-100 p-4"><h3 class="font-bold text-xl text-green-800"><i class="fas fa-map-marker-alt mr-2"></i>Indonesia (Returning Graduates)</h3></div>
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <div>
                             <strong class="block mb-1">Industry Landscape:</strong>
-                            <p class="mb-3">Strong biotech hubs integrated into public hospital networks. Toronto (MaRS) is massive for health-tech. Montreal is a historic pharma hub. Vancouver leads in genomics and lipid nanoparticles.</p>
+                            <p class="mb-3">Growing domestic push for health resilience (vaccines, med-devices, generics). High regulatory and hospital tech needs.</p>
                             <strong class="block mb-1">Typical Employers:</strong>
-                            <ul class="list-disc pl-5"><li>Pharma: Sanofi, STEMCELL.</li><li>Hospitals: UHN, SickKids.</li></ul>
+                            <ul class="list-disc pl-5"><li>Pharma/Biotech: Bio Farma, Kalbe Farma, Dexa Medica.</li><li>Government: BRIN (National Research), BPOM, Kemenkes.</li><li>Hospitals: Siloam, Mitra Keluarga (Clinical Eng).</li></ul>
                         </div>
                         <div>
-                            <strong class="block mb-1">Roles (Progression):</strong>
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li><strong>BSc / BEng:</strong> Process Engineer, Clinical Research Assistant, QA/QC. (Lab execution, manufacturing floor).</li>
-                                <li><strong>MSc:</strong> R&D Engineer, Formulation Scientist.</li>
-                                <li><strong>PhD:</strong> Principal Investigator, Senior Scientist.</li>
-                            </ul>
+                            <strong class="block mb-1">Roles:</strong>
+                            <p><strong>Clinical Engineer:</strong> Managing hospital diagnostic equipment.<br>
+                            <strong>Formulation/R&D Scientist:</strong> Direct match for your gastroretentive/gummy research.<br>
+                            <strong>Regulatory Affairs:</strong> High demand bridging international products into BPOM standards.</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Netherlands -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                    <div class="bg-orange-50 border-b border-orange-100 p-4"><h3 class="font-bold text-xl text-orange-800"><i class="fas fa-water mr-2"></i>The Netherlands (Groningen, Nijmegen, Leiden)</h3></div>
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
-                        <div>
-                            <strong class="block mb-1">Industry Landscape:</strong>
-                            <p class="mb-3">European powerhouse for clinical trials and medical technology. High density of life sciences parks (e.g., Leiden Bio Science Park).</p>
-                        </div>
-                        <div>
-                            <strong class="block mb-1">Roles (Progression):</strong>
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li><strong>BSc:</strong> In NL, university BSc grads usually go directly to MSc. HBO (Applied Science) grads take the BSc lab tech roles.</li>
-                                <li><strong>MSc:</strong> Biomedical Engineer, Clinical Trial Coordinator. Highly employable in Dutch MedTech.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Finland & Belgium -->
+                
+                <!-- Japan & Australia Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <div class="bg-blue-50 border-b border-blue-100 p-4"><h3 class="font-bold text-lg text-blue-800"><i class="fas fa-snowflake mr-2"></i>Finland (Espoo)</h3></div>
-                        <div class="p-4 text-sm text-gray-700">
-                            <p class="mb-2"><strong>Focus:</strong> Digital health, wearables, biomaterials (GE Healthcare, Oura). Highly interdisciplinary.</p>
-                            <p><strong>Roles:</strong> Bioengineers here often code (Python) alongside wet-lab work. BSc+MSc is standard entry.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <div class="bg-yellow-50 border-b border-yellow-100 p-4"><h3 class="font-bold text-lg text-yellow-800"><i class="fas fa-landmark mr-2"></i>Belgium (Leuven)</h3></div>
-                        <div class="p-4 text-sm text-gray-700">
-                            <p class="mb-2"><strong>Focus:</strong> Biopharma manufacturing and scale-up (Pfizer, GSK, UCB). Flanders heavily subsidizes biotech.</p>
-                            <p><strong>Roles:</strong> Massive demand for Bioprocess and Chemical Engineers to manage vaccine/drug floors.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Japan & Indonesia -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Japan -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                         <div class="bg-pink-50 border-b border-pink-100 p-4"><h3 class="font-bold text-lg text-pink-800"><i class="fas fa-torii-gate mr-2"></i>Japan</h3></div>
                         <div class="p-4 text-sm text-gray-700">
-                            <p class="mb-2"><strong>Focus:</strong> Regenerative medicine, robotics, bioprocessing (Takeda, Astellas, Olympus).</p>
-                            <p><strong>Roles:</strong> MSc virtually mandatory for R&D. Japanese fluency (JLPT N2/N1) critical for corporate integration.</p>
+                            <p class="mb-2"><strong>Focus:</strong> Regenerative medicine, robotics, bioprocessing (Takeda, Astellas, Olympus, RIKEN).</p>
+                            <p><strong>Roles:</strong> MSc virtually mandatory for corporate R&D. Japanese fluency (JLPT N2/N1) critical for integration.</p>
                         </div>
                     </div>
+
+                    <!-- Australia -->
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <div class="bg-green-50 border-b border-green-100 p-4"><h3 class="font-bold text-lg text-green-800"><i class="fas fa-map-marker-alt mr-2"></i>Indonesia</h3></div>
+                        <div class="bg-teal-50 border-b border-teal-100 p-4"><h3 class="font-bold text-lg text-teal-800"><i class="fas fa-kangaroo mr-2"></i>Australia (Brisbane/Melbourne)</h3></div>
                         <div class="p-4 text-sm text-gray-700">
-                            <p class="mb-2"><strong>Focus:</strong> Domestic vaccine/generic drug production (Bio Farma, Kalbe, Dexa).</p>
-                            <p><strong>Roles:</strong> Formulation Scientist (direct match for gastroretentive research), Regulatory Affairs bridging BPOM.</p>
+                            <p class="mb-2"><strong>Focus:</strong> Clinical trials, MedTech (Cochlear, ResMed, CSL). Vaxxas (Brisbane) for biotech delivery.</p>
+                            <p><strong>Roles:</strong> Medical Device Engineer, Bioprocess Scientist. High local competition for grads without PR.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family View -->
+        <section id="family-view" class="tab-content">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Family View & Financials</h2>
+            <p class="text-gray-600 mb-6">Simplified financial breakdown for Active Targets.</p>
+            
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 mb-6">
+                <label class="font-bold text-gray-700 mr-3">Maximum Family Budget (IDR/year): </label>
+                <input type="number" id="family-budget-input" value="300000000" step="10000000" class="border p-2 rounded text-lg font-bold w-64" onchange="renderFamilyView()">
+                <p class="text-xs text-gray-500 mt-1">Updates the affordability labels dynamically below based on annual tuition + living expenses.</p>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-200">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-gray-100 text-gray-700">
+                        <tr>
+                            <th class="p-3 border-b">University</th>
+                            <th class="p-3 border-b">Flight</th>
+                            <th class="p-3 border-b">Est. Total Cost/Yr (Before Aid)</th>
+                            <th class="p-3 border-b">Major Scholarship / Grant</th>
+                            <th class="p-3 border-b">Work / Bond Obligation</th>
+                            <th class="p-3 border-b">Affordability Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="family-table-body">
+                        <!-- Rendered via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Academic Readiness -->
+        <section id="readiness" class="tab-content">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Academic Readiness Tracker</h2>
+            <p class="text-gray-600 mb-6">Track your weekly independent study habits to demonstrate consistency.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-1 bg-white p-5 rounded-xl shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-lg text-gray-800 mb-4">Log New Week</h3>
+                    <form id="readiness-form" class="space-y-4 text-sm">
+                        <div><label class="block mb-1 text-gray-600">Week Date</label><input type="date" id="read-date" required class="w-full p-2 border rounded"></div>
+                        <div><label class="block mb-1 text-gray-600">Independent Study Hours</label><input type="number" id="read-hours" required class="w-full p-2 border rounded" min="0"></div>
+                        <div class="space-y-2 border-t pt-3 border-b pb-3 border-gray-100">
+                            <label class="flex items-center"><input type="checkbox" id="chk-tutor" class="mr-2 h-4 w-4 text-blue-600 rounded"> Studied without tutor</label>
+                            <label class="flex items-center"><input type="checkbox" id="chk-sat" class="mr-2 h-4 w-4 text-blue-600 rounded"> Completed SAT planned work</label>
+                            <label class="flex items-center"><input type="checkbox" id="chk-ielts" class="mr-2 h-4 w-4 text-blue-600 rounded"> Completed IELTS planned work</label>
+                            <label class="flex items-center"><input type="checkbox" id="chk-hw" class="mr-2 h-4 w-4 text-blue-600 rounded"> Caught up on school HW</label>
+                            <label class="flex items-center"><input type="checkbox" id="chk-sleep" class="mr-2 h-4 w-4 text-blue-600 rounded"> Met sleep target</label>
+                        </div>
+                        <div><label class="block mb-1 text-gray-600 font-semibold">What worked?</label><textarea id="read-worked" class="w-full p-2 border rounded text-xs" rows="2" placeholder="e.g., Used Pomodoro..."></textarea></div>
+                        <div><label class="block mb-1 text-gray-600 font-semibold">What didn't work?</label><textarea id="read-failed" class="w-full p-2 border rounded text-xs" rows="2" placeholder="e.g., Distracted by phone..."></textarea></div>
+                        <div><label class="block mb-1 text-gray-600 font-semibold">Next week focus?</label><textarea id="read-next" class="w-full p-2 border rounded text-xs" rows="2" placeholder="e.g., Leave phone in other room..."></textarea></div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded font-bold hover:bg-blue-700">Save Weekly Log</button>
+                    </form>
+                </div>
+                
+                <div class="lg:col-span-2 space-y-4 max-h-[800px] overflow-y-auto pr-2" id="readiness-history">
+                    <!-- Rendered via JS -->
                 </div>
             </div>
         </section>
@@ -220,14 +234,13 @@
         <!-- Tests Tracker Tab -->
         <section id="tests" class="tab-content">
             <h2 class="text-3xl font-bold mb-2 text-gray-800">Tests Progress Tracker</h2>
-            <p class="text-gray-600 mb-6">Log your practice tests to track readiness against program minimums.</p>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
                 <!-- SAT Section -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-bold text-xl text-blue-800"><i class="fas fa-pencil-ruler mr-2"></i>SAT Tracker</h3>
-                        <div class="text-sm bg-blue-50 px-2 py-1 rounded text-blue-700 font-semibold" id="sat-target-display">Target: 1450</div>
+                        <div class="text-sm bg-blue-50 px-2 py-1 rounded text-blue-700 font-semibold">Target: 1450</div>
                     </div>
                     
                     <form id="sat-form" class="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200 text-sm">
@@ -279,30 +292,14 @@
 
         <!-- Calendar Tab -->
         <section id="calendar" class="tab-content">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">2026-2027 Deadline Calendar</h2>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4 text-sm" id="calendar-content">
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-red-600">Sep 2026</div><div>SAT Registration Deadline (for Oct 3)</div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-red-600">Oct 3, 2026</div><div><strong>SAT Early Attempt</strong> (Scores mid-Oct)</div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Oct 2026</div><div>OUAC Opens (Canada), Studielink Opens (NL)</div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-red-600">Nov 7, 2026</div><div><strong>SAT Main Attempt</strong></div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Nov 2026</div><div>U of T & UBC Early Application Recommended Deadline</div></div>
-                <div class="flex border-b pb-2 bg-yellow-50 p-2 rounded"><div class="w-24 font-bold text-orange-600">Nov 30, 2026</div><div><strong>UQ (Australia) General Direct Application Deadline</strong> (Semester 1, 2027)</div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-green-600">Dec 2026</div><div>Kyoto iUP Application Deadline, UBC Int. Scholars Deadline</div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Jan 2027</div><div>U of T, McGill, Queen's Standard Deadlines; Aalto Deadline</div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-green-600">Feb 2027</div><div>Waseda English STEM Deadline, Tohoku Gateway Deadline</div></div>
-                <div class="flex border-b pb-2"><div class="w-24 font-bold text-blue-600">Mar 2027</div><div>KU Leuven, Radboud, Groningen (Non-Numerus Fixus) Standard Docs</div></div>
-                <div class="flex pb-2"><div class="w-24 font-bold text-gray-600">May-Jul 2027</div><div>Decisions & Visa / Study Permit Processing</div></div>
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">2026-2027 Deadline Calendar</h2>
+            <div class="mb-6 space-x-4 text-sm font-semibold bg-white p-4 rounded shadow-sm border border-gray-200 inline-block">
+                <label class="cursor-pointer"><input type="checkbox" id="cal-filter-active" checked onchange="renderCalendar()" class="mr-1"> Active Targets</label>
+                <label class="cursor-pointer"><input type="checkbox" id="cal-filter-europe" onchange="renderCalendar()" class="mr-1 ml-3"> Europe Secondary</label>
+                <label class="cursor-pointer"><input type="checkbox" id="cal-filter-canada" onchange="renderCalendar()" class="mr-1 ml-3"> Canada Reference</label>
             </div>
-        </section>
-
-        <!-- Checklist Tab -->
-        <section id="checklist" class="tab-content">
-            <h2 class="text-3xl font-bold mb-2 text-gray-800">My Application Checklist</h2>
-            <p class="text-gray-600 mb-6">Track your documents. Your progress is saved locally.</p>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <div id="interactive-checklist" class="space-y-3 text-sm text-gray-700">
-                    <!-- Populated by JS -->
-                </div>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4 text-sm" id="calendar-content">
+                <!-- Rendered via JS -->
             </div>
         </section>
 
@@ -313,287 +310,289 @@
 <!-- JAVASCRIPT & DATA ENGINE                   -->
 <!-- ========================================== -->
 <script>
-// --- CORE DATA (All 12 Universities including UQ) ---
-const uniData = [
+// --- CORE DATABASE (16 Universities) ---
+const uniDatabase = [
+    // --- ACTIVE TARGETS (8) ---
     {
-        id: "kyoto", region: "Japan", name: "Kyoto University", city: "Kyoto",
-        programs: [
-            { name: "Kyoto iUP", degree: "BSc / BEng", duration: "4.5 yrs", track: "Broad entry -> Specialization. Japanese taught during prep.", subjects: "Pharma, Applied Life Sciences, Biological Sciences." }
-        ],
-        reqs: { curriculum: "Kurikulum Merdeka accepted via Form A/B/C/D.", sat: "Required (Competitive >1350).", eng: "IELTS 6.5 or TOEFL 90.", docs: ["Transcripts", "Recommendation", "Essays", "iUP Forms"] },
-        tuition: { fees: "¥535,800/yr (approx. IDR 57M)", scholarships: "iUP Scholarship (Full tuition + ¥120k/mo stipend). MEXT Univ Recommendation." },
-        living: { low: "¥90k/mo", med: "¥120k/mo (IDR 13M)", high: "¥150k/mo", desc: "Kyoto is highly affordable compared to Tokyo/North America." }
+        id: "ui", defFolder: "active", region: "Indonesia", name: "Universitas Indonesia (UI)", city: "Depok", flight: "0 hrs (Domestic)",
+        program: { name: "S1 Teknik Biomedik", faculty: "FTUI", degree: "S1", duration: "4 yrs", track: "Regular SNBP/SNBT/SIMAK. NO KKI currently available.", curriculum: "Eng Math, Physics, Physiology, Instrumentation, Medical Devices, Biomaterials.", research: "FTUI lab collaborations." },
+        reqs: { hs: "Indonesian SMA", math: "Req (SNBT/SIMAK)", physics: "Required", chem: "Required", bio: "Required", sat: "Not Used", eng: "Not req", docs: "SNBP/SNBT/SIMAK docs." },
+        costs: { t_desc: "UKT up to Rp 20M/sem", t_yr_idr: 40000000, l_desc: "Rp 3M-5M/mo", l_yr_idr: 60000000, total_idr: 100000000 },
+        scholarship: { name: "KIP Kuliah / UI Internal", value_idr: 40000000, bond: "None" },
+        deadline: { date: "Feb/Mar/Jun 2027", desc: "SNBP/SNBT/SIMAK UI deadlines." }
     },
     {
-        id: "tohoku", region: "Japan", name: "Tohoku University", city: "Sendai",
-        programs: [
-            { name: "Gateway College / STEM Route", degree: "BSc / BEng", duration: "4 yrs", track: "English entry -> Late specialization in life sciences/engineering.", subjects: "Chemistry, Physics, Biology labs." }
-        ],
-        reqs: { curriculum: "Merdeka accepted.", sat: "Required.", eng: "IELTS 6.5.", docs: ["Statement of Purpose (400 words)", "Teacher Eval"] },
-        tuition: { fees: "¥535,800/yr (approx. IDR 57M)", scholarships: "Tohoku International Excellence (Tuition waiver), MEXT, JASSO." },
-        living: { low: "¥80k/mo", med: "¥100k/mo (IDR 10.5M)", high: "¥130k/mo", desc: "Sendai is very student-friendly and affordable." }
+        id: "nus", defFolder: "active", region: "Singapore", name: "National University of Singapore (NUS)", city: "Singapore", flight: "2 hrs",
+        program: { name: "BEng Biomedical Engineering", faculty: "College of Design and Engineering", degree: "BEng", duration: "4 yrs", track: "Direct entry.", curriculum: "Y1 common engineering. Biomaterials, Biomechanics, Healthcare Tech, Diagnostics.", research: "High undergrad research." },
+        reqs: { hs: "Merdeka accepted.", math: "Required", physics: "Required (or bridging module)", chem: "Required", bio: "Recommended", sat: "Required/Highly Recommended", eng: "IELTS 6.5", docs: "Transcripts, SAT/IELTS." },
+        costs: { t_desc: "S$17,800/yr (with MOE Grant)", t_yr_idr: 205000000, l_desc: "S$1,500/mo", l_yr_idr: 200000000, total_idr: 405000000 },
+        scholarship: { name: "ASEAN / S&T Scholar", value_idr: 405000000, bond: "MOE Grant: 3-yr work bond in SG-registered company." },
+        deadline: { date: "Mar 2027", desc: "NUS International Admissions Deadline." }
     },
     {
-        id: "waseda", region: "Japan", name: "Waseda University", city: "Tokyo",
-        programs: [
-            { name: "Fundamental/Creative Science & Engineering", degree: "BEng", duration: "4 yrs", track: "English Bioscience discontinued. Focus on Mechanical/Biomedical device.", subjects: "Math, Physics, Eng Design." }
-        ],
-        reqs: { curriculum: "Merdeka accepted.", sat: "Highly Recommended.", eng: "IELTS 6.5.", docs: ["Transcripts", "Essays"] },
-        tuition: { fees: "¥1,700,000/yr (approx. IDR 180M)", scholarships: "Waseda Partial Tuition Waivers (20-100%), JASSO." },
-        living: { low: "¥130k/mo", med: "¥160k/mo (IDR 17M)", high: "¥200k/mo", desc: "Tokyo housing drives costs higher." }
+        id: "ntu", defFolder: "active", region: "Singapore", name: "Nanyang Technological University (NTU)", city: "Singapore", flight: "2 hrs",
+        program: { name: "BEng Bioengineering", faculty: "School of Chemistry, Chem Eng, Biotech", degree: "BEng", duration: "4 yrs", track: "Direct entry.", curriculum: "Tissue engineering, biotech, med devices. Heavier chemistry focus.", research: "Final year project." },
+        reqs: { hs: "Merdeka accepted.", math: "Required", physics: "Phys/Chem/Bio required", chem: "Required", bio: "Required", sat: "Required for SMA", eng: "IELTS 6.0/6.5", docs: "Transcripts, SAT/IELTS." },
+        costs: { t_desc: "S$17,800/yr (with MOE Grant)", t_yr_idr: 205000000, l_desc: "S$1,400/mo", l_yr_idr: 190000000, total_idr: 395000000 },
+        scholarship: { name: "ASEAN / Nanyang", value_idr: 395000000, bond: "MOE Grant: 3-yr work bond in SG-registered company." },
+        deadline: { date: "Jan/Feb 2027", desc: "NTU International Admissions Deadline." }
     },
     {
-        id: "uoft", region: "Canada", name: "University of Toronto", city: "Toronto",
-        programs: [
-            { name: "Life Sciences (St. George)", degree: "BSc", duration: "4 yrs", track: "General first year -> Major in Pharma/Tox, MolGen.", subjects: "Bio, Chem, Calc." },
-            { name: "Engineering", degree: "BASc", duration: "4 yrs", track: "Chemical Eng (Bioprocess) or EngSci (Biomedical Systems).", subjects: "Heavy Calculus, Physics, Chem, Coding." }
-        ],
-        reqs: { curriculum: "Merdeka accepted, but ENGINEERING REQUIRES SENIOR PHYSICS.", sat: "Test Optional.", eng: "IELTS 6.5 (Min 6.0/band).", docs: ["Eng Supp App", "Transcripts"] },
-        tuition: { fees: "$65,000 CAD/yr (approx. IDR 750M)", scholarships: "Pearson UNAVAILABLE (No nomination). Active: U of T International Scholar Award, Faculty of Engineering Admission Awards." },
-        living: { low: "$2,000 CAD/mo", med: "$2,500 CAD/mo (IDR 28M)", high: "$3,200 CAD/mo", desc: "Toronto rent is extremely high." }
+        id: "kyoto", defFolder: "active", region: "Japan", name: "Kyoto University", city: "Kyoto", flight: "7 hrs",
+        program: { name: "Kyoto iUP", faculty: "Multiple", degree: "BSc / BEng", duration: "4.5 yrs", track: "Biotech / Pharma Focus.", curriculum: "Applied Life Sciences, Pharmaceutical Sciences.", research: "World-class Japanese labs." },
+        reqs: { hs: "Merdeka via Form A-D.", math: "Req", physics: "Req", chem: "Req", bio: "Preferred", sat: "Req", eng: "IELTS 6.5", docs: "iUP Forms, Essays." },
+        costs: { t_desc: "¥535,800/yr", t_yr_idr: 57000000, l_desc: "¥120k/mo", l_yr_idr: 156000000, total_idr: 213000000 },
+        scholarship: { name: "iUP Scholarship", value_idr: 213000000, bond: "None" },
+        deadline: { date: "Dec 2026", desc: "iUP Application window." }
     },
     {
-        id: "ubc", region: "Canada", name: "University of British Columbia", city: "Vancouver",
-        programs: [
-            { name: "Biomedical Engineering / Life Sciences", degree: "BASc / BSc", duration: "4-5 yrs (Co-op)", track: "Direct BME or General BSc.", subjects: "Cell Bio, Biomechanics, Chem." }
-        ],
-        reqs: { curriculum: "Merdeka accepted. Physics 12 REQUIRED for Engineering.", sat: "Test Optional.", eng: "IELTS 6.5.", docs: ["Personal Profile"] },
-        tuition: { fees: "$45,000 - $60,000 CAD/yr", scholarships: "International Scholars Program (Needs separate app/nomination), OIS, IMES." },
-        living: { low: "$2,200 CAD/mo", med: "$2,600 CAD/mo", high: "$3,300 CAD/mo", desc: "Vancouver is Canada's most expensive housing market." }
+        id: "tohoku", defFolder: "active", region: "Japan", name: "Tohoku University", city: "Sendai", flight: "7 hrs + Train",
+        program: { name: "Gateway College (STEM)", faculty: "Science/Eng", degree: "BSc / BEng", duration: "4 yrs", track: "English entry -> Late specialization.", curriculum: "Bio, Chem, Phys -> potential biomedical research later.", research: "Undergrad research heavy." },
+        reqs: { hs: "Merdeka accepted.", math: "Req", physics: "Req", chem: "Req", bio: "Req", sat: "Req", eng: "IELTS 6.5", docs: "SOP 400 words." },
+        costs: { t_desc: "¥535,800/yr", t_yr_idr: 57000000, l_desc: "¥100k/mo", l_yr_idr: 130000000, total_idr: 187000000 },
+        scholarship: { name: "Tohoku Int'l Excellence", value_idr: 57000000, bond: "None" },
+        deadline: { date: "Feb 2027", desc: "Gateway deadline." }
     },
     {
-        id: "mcgill", region: "Canada", name: "McGill University", city: "Montreal",
-        programs: [
-            { name: "Bioengineering / Pharmacology", degree: "BEng / BSc", duration: "4 yrs", track: "Direct entry available.", subjects: "Math, Physics, Bio." }
-        ],
-        reqs: { curriculum: "Merdeka accepted. Physics required for BEng.", sat: "Test Optional.", eng: "IELTS 6.5.", docs: ["Grades heavily weighted."] },
-        tuition: { fees: "$60,000 CAD/yr", scholarships: "Major Entrance Scholarships (Separate app), One-year automatic awards." },
-        living: { low: "$1,500 CAD/mo", med: "$1,800 CAD/mo", high: "$2,200 CAD/mo", desc: "Montreal is significantly cheaper than Toronto/Vancouver." }
+        id: "waseda", defFolder: "active", region: "Japan", name: "Waseda University", city: "Tokyo", flight: "7 hrs",
+        program: { name: "Mechanical Eng (Med-Device focus)", faculty: "FSE", degree: "BEng", duration: "4 yrs", track: "Indirect BME.", curriculum: "Math, Phys, Mechanics -> applied to biomechanics.", research: "Lab placement Y4." },
+        reqs: { hs: "Merdeka accepted.", math: "Req", physics: "Req", chem: "Req", bio: "No", sat: "Highly Rec", eng: "IELTS 6.5", docs: "Essays." },
+        costs: { t_desc: "¥1.7M/yr", t_yr_idr: 180000000, l_desc: "¥160k/mo", l_yr_idr: 200000000, total_idr: 380000000 },
+        scholarship: { name: "Waseda Tuition Waiver", value_idr: 90000000, bond: "None" },
+        deadline: { date: "Feb 2027", desc: "FSE English Route Deadline." }
     },
     {
-        id: "queens", region: "Canada", name: "Queen's University", city: "Kingston",
-        programs: [
-            { name: "Biotechnology / Life Sciences", degree: "BSc", duration: "4 yrs", track: "General Science entry.", subjects: "Bio, Chem, Calc." }
-        ],
-        reqs: { curriculum: "Merdeka accepted.", sat: "Test Optional.", eng: "IELTS 6.5.", docs: ["Supplementary Essay if borderline."] },
-        tuition: { fees: "$55,000 CAD/yr", scholarships: "Automatic International Admission Awards." },
-        living: { low: "$1,600 CAD/mo", med: "$1,900 CAD/mo", high: "$2,400 CAD/mo", desc: "Smaller university town, moderate costs." }
+        id: "monash", defFolder: "active", region: "Malaysia/Australia", name: "Monash University", city: "KL / Melbourne", flight: "2 hrs / 7 hrs",
+        program: { name: "BEng Biomedical Engineering (Hons)", faculty: "Engineering", degree: "BEng", duration: "4 yrs", track: "Y1-Y2 Malaysia, Y3-Y4 Clayton AU.", curriculum: "Biomedical, electronics, design.", research: "FYP." },
+        reqs: { hs: "Merdeka accepted.", math: "Req", physics: "Req", chem: "Req", bio: "No", sat: "Optional", eng: "IELTS 6.5", docs: "Transcripts." },
+        costs: { t_desc: "MYR 46k (Y1-2) / AUD 53k (Y3-4)", t_yr_idr: 550000000, l_desc: "High in AU", l_yr_idr: 250000000, total_idr: 800000000 },
+        scholarship: { name: "10% Bursary (MY yrs only)", value_idr: 15000000, bond: "None" },
+        deadline: { date: "Oct 2026", desc: "Feb Intake." }
     },
     {
-        id: "groningen", region: "Europe", name: "University of Groningen", city: "Groningen, NL",
-        programs: [
-            { name: "Biomedical Engineering / Life Science & Tech", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Heavy Math, Physics, Bio, Chem." }
-        ],
-        reqs: { curriculum: "Merdeka generally considered HAVO. Requires 1 yr Uni OR Boswell-Bèta deficiency exams in Math, Physics, Chem, Bio.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
-        tuition: { fees: "€16,000/yr (approx. IDR 270M)", scholarships: "Undergrad scholarships very rare for non-EU." },
-        living: { low: "€900/mo", med: "€1,200/mo (IDR 20M)", high: "€1,500/mo", desc: "Severe housing shortage; secure dorms early." }
+        id: "uq", defFolder: "active", region: "Australia", name: "The University of Queensland", city: "Brisbane", flight: "7 hrs",
+        program: { name: "BEng Biomedical Eng / BBiotech", faculty: "EAIT / Science", degree: "BEng / BSc", duration: "4-5 yrs", track: "Conditional (Expensive).", curriculum: "Medical devices, bioprocessing.", research: "Honours year." },
+        reqs: { hs: "Merdeka to ATAR.", math: "Req", physics: "Req for Eng", chem: "Req", bio: "Req for Biotech", sat: "Not Used", eng: "IELTS 6.5", docs: "Transcripts." },
+        costs: { t_desc: "AUD 58,000/yr", t_yr_idr: 600000000, l_desc: "AUD 2.5k/mo", l_yr_idr: 300000000, total_idr: 900000000 },
+        scholarship: { name: "UQ Int'l High Achievers", value_idr: 120000000, bond: "None" },
+        deadline: { date: "Nov 30, 2026", desc: "Direct App Deadline." }
     },
-    {
-        id: "radboud", region: "Europe", name: "Radboud University", city: "Nijmegen, NL",
-        programs: [
-            { name: "Molecular Life Sciences", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Chemistry, Genetics, Cell Bio." }
-        ],
-        reqs: { curriculum: "Same as Groningen (VWO equivalency needed). Missing subjects require CCVX/Boswell.", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Matching process"] },
-        tuition: { fees: "€15,000/yr (approx. IDR 250M)", scholarships: "Radboud Scholarship Programme (Partial undergrad funding available)." },
-        living: { low: "€900/mo", med: "€1,100/mo", high: "€1,400/mo", desc: "Standard Dutch student city costs." }
-    },
-    {
-        id: "kuleuven", region: "Europe", name: "KU Leuven", city: "Leuven, BE",
-        programs: [
-            { name: "Engineering Technology (Chem/Biochem)", degree: "BSc", duration: "3 yrs", track: "Direct English entry.", subjects: "Math, Chem, Process Eng." }
-        ],
-        reqs: { curriculum: "Merdeka accepted case-by-case (often requires Math test).", sat: "Not used.", eng: "IELTS 6.5.", docs: ["Motivation letter"] },
-        tuition: { fees: "€7,500/yr (approx. IDR 125M)", scholarships: "Very limited at bachelor level." },
-        living: { low: "€900/mo", med: "€1,100/mo", high: "€1,300/mo", desc: "Highly affordable tuition compared to NL/Canada." }
-    },
-    {
-        id: "aalto", region: "Europe", name: "Aalto University", city: "Espoo, FI",
-        programs: [
-            { name: "Chemical Engineering (Biotech path)", degree: "BSc + MSc", duration: "3+2 yrs", track: "Direct English entry.", subjects: "Chem, Process Tech, Bio." }
-        ],
-        reqs: { curriculum: "Merdeka accepted. Math & Physics evaluated. SAT route highly favored.", sat: "Group 2 admission heavily relies on SAT (Aim 1350+).", eng: "IELTS 6.5.", docs: ["Transcripts"] },
-        tuition: { fees: "€12,000/yr (approx. IDR 200M)", scholarships: "Aalto Excellence (50% or 100% Tuition Waiver) based on grades/SAT." },
-        living: { low: "€800/mo", med: "€1,000/mo", high: "€1,300/mo", desc: "Student housing (HOAS) is heavily subsidized." }
-    },
-    {
-        id: "uq", region: "Australia", name: "The University of Queensland (UQ)", city: "Brisbane, QLD",
-        programs: [
-            { name: "Biomedical Engineering", degree: "BEng (Honours)", duration: "4 yrs", track: "Direct entry. MedTech, biomaterials, diagnostics.", subjects: "Math, Physics, Chem." },
-            { name: "Biotechnology (Medical Biotech)", degree: "BBiotech (Hons)", duration: "4 yrs", track: "Direct entry. Pharmacology, drug design, genetics.", subjects: "Chem, Bio, Math." },
-            { name: "Engineering / Biotech Dual Degree", degree: "BEng(Hons) / BBiotech", duration: "5 yrs", track: "Direct entry. Interdisciplinary medical device & bioprocess.", subjects: "Math, Physics, Chem, Bio." }
-        ],
-        reqs: { curriculum: "Merdeka accepted. Calculated to ATAR. Math & Chem required. Physics REQUIRED for Engineering routes.", sat: "Not Used / Alternative (SMA directly assessed).", eng: "IELTS 6.5 (Min 6.0/band).", docs: ["Transcripts", "English Score", "Passport", "Direct application or Agent"] },
-        tuition: { fees: "~$58,056 AUD/yr (approx. IDR 600M)", scholarships: "UQ International High Achievers (20% reduction), EAIT Faculty Awards. (Note: Australia Awards S1 not applicable for Indonesia)." },
-        living: { low: "$2,000 AUD/mo", med: "$2,500 AUD/mo (IDR 26M)", high: "$3,200 AUD/mo", desc: "Requires OSHC health cover upfront. Moderate Australian city cost." }
-    }
+    
+    // --- EUROPE (SECONDARY: 4) ---
+    { id: "groningen", defFolder: "europe", region: "Netherlands", name: "University of Groningen", city: "Groningen", flight: "16 hrs", program: { name: "BSc Biomedical Engineering / LST", degree: "BSc", track: "Direct entry." }, reqs: { hs: "HAVO equivalent. 1 yr Uni OR Exams.", physics: "Required" }, costs: { total_idr: 510000000 }, scholarship: { name: "None for UG", value_idr: 0, bond: "None" }, deadline: { date: "Mar 2027", desc: "Standard." } },
+    { id: "aalto", defFolder: "europe", region: "Finland", name: "Aalto University", city: "Espoo", flight: "15 hrs", program: { name: "BSc Chem Eng (Biotech)", degree: "BSc+MSc", track: "Direct entry." }, reqs: { hs: "Merdeka ok.", sat: "Highly favored.", physics: "Required" }, costs: { total_idr: 360000000 }, scholarship: { name: "Aalto Excellence", value_idr: 200000000, bond: "None" }, deadline: { date: "Jan 2027", desc: "Group 2." } },
+    { id: "kuleuven", defFolder: "europe", region: "Belgium", name: "KU Leuven", city: "Leuven", flight: "16 hrs", program: { name: "BSc Eng Tech (Chem/Biochem)", degree: "BSc", track: "Direct entry." }, reqs: { hs: "Case-by-case.", physics: "Required" }, costs: { total_idr: 280000000 }, scholarship: { name: "Limited", value_idr: 0, bond: "None" }, deadline: { date: "Mar 2027", desc: "Standard." } },
+    { id: "radboud", defFolder: "europe", region: "Netherlands", name: "Radboud University", city: "Nijmegen", flight: "16 hrs", program: { name: "BSc Molecular Life Sciences", degree: "BSc", track: "Direct entry." }, reqs: { hs: "VWO equivalency needed.", physics: "Required" }, costs: { total_idr: 450000000 }, scholarship: { name: "Radboud Scholarship", value_idr: 100000000, bond: "None" }, deadline: { date: "Mar 2027", desc: "Standard." } },
+
+    // --- CANADA (FINANCIAL REACH: 4) ---
+    { id: "uoft", defFolder: "canada", region: "Canada", name: "University of Toronto", city: "Toronto", flight: "20+ hrs", program: { name: "Life Sciences / Engineering", degree: "BSc/BASc", track: "Direct." }, reqs: { physics: "Required for Eng." }, costs: { total_idr: 1100000000 }, scholarship: { name: "Pearson UNAVAILABLE. Int'l Awards active.", value_idr: 100000000, bond: "None" }, deadline: { date: "Jan 2027", desc: "Standard." } },
+    { id: "ubc", defFolder: "canada", region: "Canada", name: "University of British Columbia", city: "Vancouver", flight: "18 hrs", program: { name: "Biomedical Eng", degree: "BASc", track: "Direct." }, reqs: { physics: "Required." }, costs: { total_idr: 950000000 }, scholarship: { name: "Int'l Scholars", value_idr: 950000000, bond: "None" }, deadline: { date: "Dec 2026", desc: "Schol App." } },
+    { id: "mcgill", defFolder: "canada", region: "Canada", name: "McGill University", city: "Montreal", flight: "20+ hrs", program: { name: "Bioengineering", degree: "BEng", track: "Direct." }, reqs: { physics: "Required." }, costs: { total_idr: 950000000 }, scholarship: { name: "Major Entrance", value_idr: 100000000, bond: "None" }, deadline: { date: "Jan 2027", desc: "Standard." } },
+    { id: "queens", defFolder: "canada", region: "Canada", name: "Queen's University", city: "Kingston", flight: "20+ hrs", program: { name: "Biotechnology", degree: "BSc", track: "Gen Sci." }, reqs: { physics: "Rec." }, costs: { total_idr: 900000000 }, scholarship: { name: "Admiss Awards", value_idr: 50000000, bond: "None" }, deadline: { date: "Jan 2027", desc: "Standard." } }
 ];
 
 // --- APP STATE & LOCAL STORAGE ---
-const STORAGE_KEY = 'uniPathExplorer_v4';
+const STORAGE_KEY = 'uniPathExplorer_v6';
 let appState = {
     testHistory: {
-        sat: [{ id: 1, date: '2026-05-01', rw: 580, math: 490, total: 1070, notes: 'Official Baseline' }],
+        sat: [{ id: 1, date: '2026-10-03', rw: 580, math: 490, total: 1070, notes: 'Baseline' }, { id: 2, date: '2026-11-07', rw: 0, math: 0, total: 0, notes: 'Main Attempt (Planned)' }],
         ielts: []
     },
-    satTarget: { rw: 700, math: 750, total: 1450 },
-    checklistData: {}
+    customFolders: {}, 
+    readinessLogs: [],
+    familyBudget: 300000000
 };
 
 if(localStorage.getItem(STORAGE_KEY)) {
-    try { appState = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
+    try { 
+        let loaded = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        appState = { ...appState, ...loaded };
+    } catch(e) {}
 }
 function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
-    updateDashboard();
 }
 
-// --- RENDERING LOGIC ---
+function getFolder(uniId) {
+    return appState.customFolders[uniId] || uniDatabase.find(u => u.id === uniId).defFolder;
+}
+
+function moveFolder(uniId, newFolder) {
+    appState.customFolders[uniId] = newFolder;
+    saveState();
+    renderAllUniLists();
+    renderDashboardCards();
+    renderFamilyView();
+    renderCalendar();
+}
+
+// --- RENDERING ---
 function switchTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active', 'bg-gray-100'));
     document.getElementById(tabId).classList.add('active');
     event.currentTarget.classList.add('active');
-    if(tabId === 'tests') renderTests();
-}
-
-function renderUniversities(filter = 'All') {
-    const container = document.getElementById('uni-list');
-    container.innerHTML = '';
     
-    // Update filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        if(btn.dataset.filter === filter) {
-            btn.classList.add('bg-blue-600', 'text-white');
-            btn.classList.remove('bg-white', 'text-gray-700');
-        } else {
-            btn.classList.add('bg-white', 'text-gray-700');
-            btn.classList.remove('bg-blue-600', 'text-white');
+    if(tabId === 'active-targets' || tabId === 'europe-options' || tabId === 'canada-options') renderAllUniLists();
+    if(tabId === 'family-view') renderFamilyView();
+    if(tabId === 'readiness') renderReadiness();
+    if(tabId === 'tests') renderTests();
+    if(tabId === 'calendar') renderCalendar();
+}
+
+function createUniCardHTML(u, currentFolder) {
+    let btnHtml = currentFolder !== 'active' ? `<button onclick="moveFolder('${u.id}', 'active')" class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded hover:bg-green-200 mt-3 font-semibold"><i class="fas fa-arrow-up mr-1"></i>Move to Active Targets</button>` : `<button onclick="moveFolder('${u.id}', '${uniDatabase.find(x=>x.id===u.id).defFolder}')" class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded hover:bg-gray-200 mt-3"><i class="fas fa-arrow-down mr-1"></i>Remove from Active</button>`;
+    
+    // For the UI card, it only belongs in Active, hide the remove button to prevent sending it to undefined.
+    if(u.id === 'ui' || u.id === 'nus' || u.id === 'ntu' || u.id === 'kyoto' || u.id === 'tohoku' || u.id === 'waseda' || u.id === 'monash' || u.id === 'uq') {
+        if(currentFolder === 'active') {
+            btnHtml = `<button onclick="moveFolder('${u.id}', 'europe')" class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded hover:bg-gray-200 mt-3"><i class="fas fa-archive mr-1"></i>Archive from Active</button>`;
         }
-    });
+    }
 
-    uniData.filter(u => filter === 'All' || u.region === filter).forEach(u => {
-        let progs = u.programs.map(p => `
-            <div class="mt-3 p-3 bg-gray-50 rounded border border-gray-100">
-                <h4 class="font-bold text-gray-800">${p.name} <span class="text-xs font-normal text-gray-500 bg-gray-200 px-2 py-1 rounded ml-2">${p.degree} | ${p.duration}</span></h4>
-                <p class="text-sm text-gray-600 mt-1"><strong>Track:</strong> ${p.track}</p>
-                <p class="text-sm text-gray-600 mt-1"><strong>Key Subjects:</strong> ${p.subjects}</p>
-            </div>
-        `).join('');
-
-        container.innerHTML += `
-            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="text-xl font-bold text-blue-800">${u.name}</h3>
-                        <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i>${u.city}, ${u.region}</p>
-                    </div>
+    return `
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 transition hover:shadow-md">
+            <h3 class="text-xl font-bold text-blue-900">${u.name} <span class="text-sm font-normal text-gray-500">(${u.city}, ${u.region})</span></h3>
+            <p class="text-sm font-bold mt-1 text-gray-700">${u.program.name} <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-xs ml-2">${u.program.degree}</span></p>
+            ${u.program.track ? `<p class="text-xs text-gray-500 mt-1 italic">${u.program.track}</p>` : ''}
+            
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                <div class="bg-gray-50 p-3 rounded">
+                    <strong class="block text-gray-800 mb-1 border-b pb-1"><i class="fas fa-clipboard-check text-blue-500 mr-1"></i> Admissions</strong>
+                    <p class="mt-1"><span class="font-semibold text-gray-600">Physics:</span> ${u.reqs.physics}</p>
+                    ${u.reqs.sat ? `<p><span class="font-semibold text-gray-600">SAT:</span> ${u.reqs.sat}</p>` : ''}
                 </div>
-                ${progs}
+                <div class="bg-gray-50 p-3 rounded">
+                    <strong class="block text-gray-800 mb-1 border-b pb-1"><i class="fas fa-wallet text-green-500 mr-1"></i> Costs & Aid</strong>
+                    <p class="mt-1"><span class="font-semibold text-gray-600">Est. Total:</span> Rp ${(u.costs.total_idr/1000000).toLocaleString()} Juta/yr</p>
+                    <p class="text-xs bg-yellow-100 text-yellow-800 p-1.5 mt-2 rounded leading-tight">Aid: ${u.scholarship.name}</p>
+                </div>
             </div>
-        `;
-    });
+            ${btnHtml}
+        </div>
+    `;
 }
 
-function renderOtherTabs() {
-    // Requirements
-    document.getElementById('req-content').innerHTML = uniData.map(u => `
-        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-            <h3 class="text-lg font-bold text-gray-800 mb-3">${u.name}</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div><strong class="text-gray-700">Equivalency:</strong> <p class="text-gray-600">${u.reqs.curriculum}</p></div>
-                <div><strong class="text-gray-700">Tests:</strong> <p class="text-gray-600">SAT: ${u.reqs.sat}<br>English: ${u.reqs.eng}</p></div>
-                <div class="md:col-span-2"><strong class="text-gray-700">Required Docs:</strong> <p class="text-gray-600">${u.reqs.docs.join(', ')}</p></div>
+function renderAllUniLists() {
+    const active = uniDatabase.filter(u => getFolder(u.id) === 'active');
+    const europe = uniDatabase.filter(u => getFolder(u.id) === 'europe');
+    const canada = uniDatabase.filter(u => getFolder(u.id) === 'canada');
+    
+    document.getElementById('active-list').innerHTML = active.map(u => createUniCardHTML(u, 'active')).join('');
+    document.getElementById('europe-list').innerHTML = europe.map(u => createUniCardHTML(u, 'europe')).join('');
+    document.getElementById('canada-list').innerHTML = canada.map(u => createUniCardHTML(u, 'canada')).join('');
+}
+
+function renderDashboardCards() {
+    const active = uniDatabase.filter(u => getFolder(u.id) === 'active');
+    document.getElementById('dash-active-cards').innerHTML = active.map(u => `
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 flex flex-col justify-between hover:shadow-md transition cursor-pointer" onclick="switchTab('active-targets')">
+            <div>
+                <h4 class="font-bold text-gray-800 text-lg">${u.name}</h4>
+                <p class="text-xs font-semibold text-gray-500 mb-2">${u.program.name}</p>
+                
+                <div class="mt-4 space-y-2 text-sm text-gray-600">
+                    <div class="flex items-center"><i class="fas fa-clock text-blue-500 w-5"></i> <span><strong class="text-gray-800">Deadline:</strong> ${u.deadline.date}</span></div>
+                    <div class="flex items-center"><i class="fas fa-money-bill-wave text-green-500 w-5"></i> <span><strong class="text-gray-800">Cost:</strong> Rp ${(u.costs.total_idr/1000000).toLocaleString()} Jt <span class="text-xs text-gray-400">/yr</span></span></div>
+                </div>
             </div>
         </div>
     `).join('');
-
-    // Tuition
-    document.getElementById('tuition-content').innerHTML = uniData.map(u => `
-        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 flex flex-col md:flex-row gap-4 justify-between">
-            <div class="md:w-1/3">
-                <h3 class="text-lg font-bold text-gray-800">${u.name}</h3>
-                <p class="text-xl font-semibold text-red-600 mt-2">${u.tuition.fees}</p>
-            </div>
-            <div class="md:w-2/3 bg-blue-50 p-3 rounded border border-blue-100">
-                <strong class="text-blue-800 text-sm block mb-1"><i class="fas fa-award mr-1"></i> Active Scholarships:</strong>
-                <p class="text-sm text-blue-900">${u.tuition.scholarships}</p>
-            </div>
-        </div>
-    `).join('');
-
-    // Living
-    document.getElementById('living-content').innerHTML = uniData.map(u => `
-        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-            <h3 class="text-lg font-bold text-gray-800 mb-1">${u.city}</h3>
-            <p class="text-xs text-gray-500 mb-3">${u.name}</p>
-            <ul class="text-sm space-y-1 text-gray-600 mb-3">
-                <li><span class="font-semibold text-green-600">Low:</span> ${u.living.low}</li>
-                <li><span class="font-semibold text-blue-600">Typical:</span> ${u.living.med}</li>
-                <li><span class="font-semibold text-red-600">High:</span> ${u.living.high}</li>
-            </ul>
-            <p class="text-xs text-gray-500 italic">${u.living.desc}</p>
-        </div>
-    `).join('');
-
-    // Checklist
-    const clItems = ["Passport Ready", "Transcripts Translated", "SAT Reached Target", "IELTS Reached Target", "Teachers Asked for Recs", "Essays Drafted", "Kyoto iUP Forms", "U of T Eng Supp App", "UQ Direct/Agent App Started"];
-    document.getElementById('interactive-checklist').innerHTML = clItems.map((item, i) => `
-        <label class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded cursor-pointer ${appState.checklistData[i] ? 'checked' : ''}">
-            <input type="checkbox" onchange="toggleChecklist(${i}, this)" class="w-5 h-5 text-blue-600 rounded" ${appState.checklistData[i] ? 'checked' : ''}>
-            <span class="font-medium">${item}</span>
-        </label>
-    `).join('');
 }
 
-function filterUnis(filter) {
-    renderUniversities(filter);
-}
-
-function toggleChecklist(index, el) {
-    appState.checklistData[index] = el.checked;
-    el.parentElement.classList.toggle('checked', el.checked);
+function renderFamilyView() {
+    appState.familyBudget = parseInt(document.getElementById('family-budget-input').value) || 0;
     saveState();
+    
+    const active = uniDatabase.filter(u => getFolder(u.id) === 'active');
+    const tbody = document.getElementById('family-table-body');
+    
+    tbody.innerHTML = active.map(u => {
+        let afterSchol = u.costs.total_idr - u.scholarship.value_idr;
+        if(afterSchol < 0) afterSchol = 0;
+        
+        let status = '';
+        if(u.costs.total_idr <= appState.familyBudget) {
+            status = '<span class="bg-green-100 text-green-800 px-2 py-1 rounded font-bold text-xs">Under Budget</span>';
+        } else if (afterSchol <= appState.familyBudget) {
+            status = '<span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-bold text-xs">Affordable with Scholarship</span>';
+        } else {
+            status = '<span class="bg-red-100 text-red-800 px-2 py-1 rounded font-bold text-xs">Financially High Risk</span>';
+        }
+
+        return `
+            <tr class="border-b hover:bg-gray-50">
+                <td class="p-3 font-bold text-gray-800">${u.name} <br><span class="text-xs font-normal text-gray-500">${u.program.degree}</span></td>
+                <td class="p-3 text-gray-600">${u.flight}</td>
+                <td class="p-3 text-red-600 font-semibold">Rp ${(u.costs.total_idr/1000000).toLocaleString()} Jt</td>
+                <td class="p-3 text-xs text-gray-700"><strong>${u.scholarship.name}</strong><br>Max Rp ${(u.scholarship.value_idr/1000000).toLocaleString()} Jt</td>
+                <td class="p-3 text-xs text-orange-600 font-medium">${u.scholarship.bond}</td>
+                <td class="p-3 leading-tight">${status} <br><span class="text-xs text-gray-500 block mt-1">Est. post-aid:<br><strong>Rp ${(afterSchol/1000000).toLocaleString()} Jt</strong></span></td>
+            </tr>
+        `;
+    }).join('');
 }
 
-// --- TESTS TRACKER LOGIC ---
+function renderReadiness() {
+    const hist = document.getElementById('readiness-history');
+    if(appState.readinessLogs.length === 0) {
+        hist.innerHTML = `<p class="text-gray-500 italic p-4">No logs yet. Record your first week!</p>`;
+        return;
+    }
+    hist.innerHTML = appState.readinessLogs.sort((a,b) => new Date(b.date) - new Date(a.date)).map(log => `
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 text-sm">
+            <h4 class="font-bold text-gray-800 border-b pb-2 mb-3">Week of ${log.date} <span class="float-right text-blue-600 bg-blue-50 px-2 py-1 rounded">${log.hours} hrs indep. study</span></h4>
+            <div class="flex flex-wrap gap-2 mb-4 border-b pb-3 border-gray-100">
+                <span class="px-2 py-1 rounded text-xs font-semibold ${log.chk_tutor ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-400'}"><i class="fas fa-check mr-1"></i>No Tutor</span>
+                <span class="px-2 py-1 rounded text-xs font-semibold ${log.chk_sat ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-400'}"><i class="fas fa-check mr-1"></i>SAT Done</span>
+                <span class="px-2 py-1 rounded text-xs font-semibold ${log.chk_ielts ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-400'}"><i class="fas fa-check mr-1"></i>IELTS Done</span>
+                <span class="px-2 py-1 rounded text-xs font-semibold ${log.chk_hw ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-400'}"><i class="fas fa-check mr-1"></i>HW Caught Up</span>
+                <span class="px-2 py-1 rounded text-xs font-semibold ${log.chk_sleep ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-400'}"><i class="fas fa-check mr-1"></i>Sleep Target</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-gray-50 p-2 rounded"><strong class="text-gray-700 block mb-1">Worked:</strong> <p class="text-gray-600">${log.worked}</p></div>
+                <div class="bg-gray-50 p-2 rounded"><strong class="text-gray-700 block mb-1">Failed:</strong> <p class="text-gray-600">${log.failed}</p></div>
+                <div class="bg-blue-50 p-2 rounded"><strong class="text-blue-800 block mb-1">Next:</strong> <p class="text-blue-900 font-medium">${log.next}</p></div>
+            </div>
+        </div>
+    `).join('');
+}
+
+document.getElementById('readiness-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    appState.readinessLogs.push({
+        id: Date.now(),
+        date: document.getElementById('read-date').value,
+        hours: document.getElementById('read-hours').value,
+        chk_tutor: document.getElementById('chk-tutor').checked,
+        chk_sat: document.getElementById('chk-sat').checked,
+        chk_ielts: document.getElementById('chk-ielts').checked,
+        chk_hw: document.getElementById('chk-hw').checked,
+        chk_sleep: document.getElementById('chk-sleep').checked,
+        worked: document.getElementById('read-worked').value,
+        failed: document.getElementById('read-failed').value,
+        next: document.getElementById('read-next').value
+    });
+    saveState();
+    this.reset();
+    renderReadiness();
+});
+
+// TEST TRACKER
 function renderTests() {
     const satBody = document.getElementById('sat-history-body');
-    satBody.innerHTML = '';
-    const satData = [...appState.testHistory.sat].sort((a,b) => new Date(b.date) - new Date(a.date));
-    satData.forEach(test => {
-        satBody.innerHTML += `
-            <tr class="border-b hover:bg-gray-50">
-                <td class="p-2 whitespace-nowrap">${test.date}</td>
-                <td class="p-2 font-bold ${test.total >= appState.satTarget.total ? 'text-green-600' : 'text-gray-800'}">${test.total}</td>
-                <td class="p-2">${test.rw}</td>
-                <td class="p-2">${test.math}</td>
-                <td class="p-2 truncate max-w-[150px]">${test.notes}</td>
-                <td class="p-2"><button onclick="deleteTest('sat', ${test.id})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button></td>
-            </tr>
-        `;
-    });
-
-    const ieltsBody = document.getElementById('ielts-history-body');
-    ieltsBody.innerHTML = '';
-    const ieltsData = [...appState.testHistory.ielts].sort((a,b) => new Date(b.date) - new Date(a.date));
-    ieltsData.forEach(test => {
-        ieltsBody.innerHTML += `
-            <tr class="border-b hover:bg-gray-50">
-                <td class="p-2 whitespace-nowrap">${test.date}</td>
-                <td class="p-2 font-bold ${test.overall >= 7.0 ? 'text-green-600' : 'text-gray-800'}">${test.overall}</td>
-                <td class="p-2 text-xs">L:${test.l} R:${test.r} W:${test.w} S:${test.s}</td>
-                <td class="p-2"><button onclick="deleteTest('ielts', ${test.id})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button></td>
-            </tr>
-        `;
-    });
+    satBody.innerHTML = appState.testHistory.sat.sort((a,b) => new Date(a.date) - new Date(b.date)).map(test => `
+        <tr class="border-b hover:bg-gray-50">
+            <td class="p-2 whitespace-nowrap">${test.date}</td>
+            <td class="p-2 font-bold ${test.total >= appState.satTarget.total ? 'text-green-600' : (test.total===0?'text-gray-400':'text-gray-800')}">${test.total || '-'}</td>
+            <td class="p-2">${test.rw || '-'}</td>
+            <td class="p-2">${test.math || '-'}</td>
+            <td class="p-2 truncate max-w-[150px]">${test.notes}</td>
+            <td class="p-2"><button onclick="deleteTest('sat', ${test.id})" class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button></td>
+        </tr>
+    `).join('');
 }
-
-function deleteTest(type, id) {
-    appState.testHistory[type] = appState.testHistory[type].filter(t => t.id !== id);
-    saveState();
-    renderTests();
-}
-
+function deleteTest(type, id) { appState.testHistory[type] = appState.testHistory[type].filter(t => t.id !== id); saveState(); renderTests(); }
 document.getElementById('sat-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const rw = parseInt(document.getElementById('sat-rw').value);
@@ -602,38 +601,38 @@ document.getElementById('sat-form').addEventListener('submit', function(e) {
     saveState(); this.reset(); renderTests();
 });
 
-document.getElementById('ielts-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const l = parseFloat(document.getElementById('ielts-l').value);
-    const r = parseFloat(document.getElementById('ielts-r').value);
-    const w = parseFloat(document.getElementById('ielts-w').value);
-    const s = parseFloat(document.getElementById('ielts-s').value);
-    let avg = (l + r + w + s) / 4, remainder = avg % 1, overall = Math.floor(avg);
-    if(remainder >= 0.75) overall += 1; else if(remainder >= 0.25) overall += 0.5;
-    appState.testHistory.ielts.push({ id: Date.now(), date: document.getElementById('ielts-date').value, notes: document.getElementById('ielts-notes').value || 'Practice', l, r, w, s, overall: overall.toFixed(1) });
-    saveState(); this.reset(); renderTests();
-});
-
-function updateDashboard() {
-    const dashTests = document.getElementById('dash-tests');
-    const satHistory = appState.testHistory.sat;
-    const latestSat = satHistory.length > 0 ? satHistory.reduce((a, b) => new Date(a.date) > new Date(b.date) ? a : b) : { total: 'N/A' };
+// CALENDAR
+function renderCalendar() {
+    const showActive = document.getElementById('cal-filter-active').checked;
+    const showEurope = document.getElementById('cal-filter-europe').checked;
+    const showCanada = document.getElementById('cal-filter-canada').checked;
     
-    dashTests.innerHTML = `
-        <h3 class="font-bold text-gray-700 mb-2 border-b pb-2">Test Readiness</h3>
-        <p class="text-sm text-gray-600 mb-1"><strong>Latest SAT:</strong> ${latestSat.total} <span class="text-xs text-gray-400">/ Target: ${appState.satTarget.total}</span></p>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-            <div class="bg-blue-600 h-2 rounded-full transition-all" style="width: ${latestSat.total !== 'N/A' ? Math.min((latestSat.total/appState.satTarget.total)*100, 100) : 0}%"></div>
+    let events = [
+        { date: "Oct 3, 2026", desc: "SAT Early Attempt", type: "Test" },
+        { date: "Nov 7, 2026", desc: "SAT Main Attempt", type: "Test" },
+        { date: "Feb/Mar 2027", desc: "SNBP/SNBT UI Registrations Open", type: "Admissions" }
+    ];
+    
+    uniDatabase.forEach(u => {
+        let f = getFolder(u.id);
+        if((f === 'active' && showActive) || (f === 'europe' && showEurope) || (f === 'canada' && showCanada)) {
+            events.push({ date: u.deadline.date, desc: `<strong>${u.name}:</strong> ${u.deadline.desc}`, type: "Deadline", folder: f });
+        }
+    });
+
+    document.getElementById('calendar-content').innerHTML = events.map(e => `
+        <div class="flex border-b border-gray-100 pb-3 items-center">
+            <div class="w-36 font-bold ${e.type === 'Test' ? 'text-red-600' : 'text-blue-600'}">${e.date}</div>
+            <div class="flex-1 text-gray-700">${e.desc}</div>
+            ${e.folder ? `<div class="w-20 text-right"><span class="text-[10px] uppercase font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded">${e.folder}</span></div>` : ''}
         </div>
-        <p class="text-xs text-gray-500 italic">Log scores in Tests Tracker to map progress.</p>
-    `;
+    `).join('');
 }
 
-// Init
-renderUniversities('All');
-renderOtherTabs();
-updateDashboard();
-
+// INIT
+renderDashboardCards();
+renderReadiness();
+document.getElementById('family-budget-input').value = appState.familyBudget;
 </script>
 </body>
 </html>
